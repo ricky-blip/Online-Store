@@ -104,7 +104,8 @@ class LandingPageView extends GetView<LandingPageController> {
                         child: Row(
                           children: [
                             Text("More"),
-                            Icon(Icons.forward),
+                            SizedBox(width: 5),
+                            Icon(Icons.fast_forward_rounded),
                           ],
                         ),
                       ),
@@ -117,6 +118,12 @@ class LandingPageView extends GetView<LandingPageController> {
                   scrollDirection: Axis.vertical,
                   child: Column(
                     children: [
+                      Row(
+                        children: [
+                          RecommendedProductsWidget(),
+                          RecommendedProductsWidget(),
+                        ],
+                      ),
                       Row(
                         children: [
                           RecommendedProductsWidget(),

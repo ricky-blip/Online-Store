@@ -131,7 +131,7 @@ class LandingPageView extends GetView<LandingPageController> {
                 //     return Text("Test");
                 //   },
                 // ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           ],

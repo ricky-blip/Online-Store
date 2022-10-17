@@ -22,6 +22,8 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      transition: Transition.size,
+      transitionDuration: Duration(milliseconds: 700),
     ),
   ];
 }

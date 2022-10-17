@@ -6,6 +6,8 @@ abstract class Routes {
   static const SPLASH_SCREEN = _Paths.SPLASH_SCREEN;
   static const HOME = _Paths.HOME;
   static const LANDING_PAGE = _Paths.LANDING_PAGE;
+  static const ORDER = _Paths.ORDER;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
@@ -13,4 +15,6 @@ abstract class _Paths {
   static const SPLASH_SCREEN = '/splash-screen';
   static const HOME = '/home';
   static const LANDING_PAGE = '/landing-page';
+  static const ORDER = '/order';
+  static const PROFILE = '/profile';
 }

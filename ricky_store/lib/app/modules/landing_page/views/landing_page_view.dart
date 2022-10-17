@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:ricky_store/app/widgets/recommended_products_widget.dart';
 
 import '../../../constant/color.dart';
@@ -18,7 +19,7 @@ class LandingPageView extends GetView<LandingPageController> {
           children: [
             Column(
               children: [
-                //SECTION AppBar
+                //SECTION TopBar
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 25,
@@ -55,15 +56,21 @@ class LandingPageView extends GetView<LandingPageController> {
 
                 //SECTION New Products Text
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 25,
+                  padding: const EdgeInsets.only(
+                    top: 0,
+                    left: 25,
+                    right: 25,
+                    bottom: 15,
                   ),
                   child: Row(
                     children: [
                       Text(
                         "New Products",
                         style: Get.textTheme.headline6,
+                      ),
+                      Icon(
+                        Icons.fiber_new_sharp,
+                        color: appRed,
                       ),
                     ],
                   ),
@@ -114,25 +121,16 @@ class LandingPageView extends GetView<LandingPageController> {
                 ),
 
                 //SECTION Products Recommended
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          RecommendedProductsWidget(),
-                          RecommendedProductsWidget(),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          RecommendedProductsWidget(),
-                          RecommendedProductsWidget(),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                // AlignedGridView.count(
+                //   crossAxisCount: 2,
+                //   mainAxisSpacing: 2,
+                //   crossAxisSpacing: 2,
+                //   shrinkWrap: true,
+                //   physics: const NeverScrollableScrollPhysics(),
+                //   itemBuilder: (context, index) {
+                //     return Text("Test");
+                //   },
+                // ),
                 SizedBox(height: 20),
               ],
             ),

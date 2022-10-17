@@ -68,7 +68,7 @@ class LandingPageView extends GetView<LandingPageController> {
                         "New Products",
                         style: Get.textTheme.headline6,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.fiber_new_sharp,
                         color: appRed,
                       ),

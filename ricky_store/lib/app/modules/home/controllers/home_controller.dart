@@ -8,7 +8,7 @@ class HomeController extends GetxController {
   RxInt currentTab = 0.obs;
 
   final List screen = [
-    const LandingPageView(),
+    LandingPageView(),
     const OrderView(),
     const ProfileView(),
   ];

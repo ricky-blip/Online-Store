@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:ricky_store/app/data/models/product_new_model.dart';
+import 'package:ricky_store/app/modules/landing_page/bindings/landing_page_binding.dart';
 import 'package:ricky_store/app/widgets/recommended_products_widget.dart';
 
 import '../../../constant/color.dart';
@@ -9,7 +11,9 @@ import '../../../widgets/new_products_widget.dart';
 import '../controllers/landing_page_controller.dart';
 
 class LandingPageView extends GetView<LandingPageController> {
-  const LandingPageView({Key? key}) : super(key: key);
+  final newProductC = Get.put(LandingPageController());
+
+  LandingPageView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +72,7 @@ class LandingPageView extends GetView<LandingPageController> {
                         "New Products",
                         style: Get.textTheme.headline6,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.fiber_new_sharp,
                         color: appRed,
                       ),
@@ -79,12 +83,23 @@ class LandingPageView extends GetView<LandingPageController> {
                 //SECTION New Product
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      NewProductsWidget(),
-                      NewProductsWidget(),
-                      NewProductsWidget(),
-                    ],
+                  child: FutureBuilder<List<ProductNew>?>(
+                    future: controller.getProductNew("new"),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Text("Waiting . . .");
+                      } else if (snapshot.hasData) {
+                        return Row(
+                          children: [
+                            ...snapshot.data!.map(
+                              (e) => NewProductsWidget(newProduct: e),
+                            ),
+                          ],
+                        );
+                      }
+
+                      return Text("data");
+                    },
                   ),
                 ),
 

@@ -33,7 +33,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.LANDING_PAGE,
-      page: () => const LandingPageView(),
+      page: () => LandingPageView(),
       binding: LandingPageBinding(),
     ),
     GetPage(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:ricky_store/app/constant/color.dart';
-import 'package:ricky_store/app/modules/landing_page/views/landing_page_view.dart';
+
 import 'package:ricky_store/app/modules/order/views/order_view.dart';
 import 'package:ricky_store/app/widgets/new_products_widget.dart';
 

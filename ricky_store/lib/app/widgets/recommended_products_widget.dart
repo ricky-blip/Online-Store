@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ricky_store/app/data/models/product_recommended_model.dart';
 
 class RecommendedProductsWidget extends StatelessWidget {
+  ProductRecommended recommendedW;
+
+  RecommendedProductsWidget({required this.recommendedW});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,13 +26,14 @@ class RecommendedProductsWidget extends StatelessWidget {
                   padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
-                      FlutterLogo(
-                        size: 150,
+                      Image.network(
+                        recommendedW.gambar,
+                        fit: BoxFit.contain,
                       ),
                       SizedBox(height: 8),
-                      Text("Products"),
+                      Text(recommendedW.namaProduct),
                       SizedBox(height: 7),
-                      Text("Harga"),
+                      Text(recommendedW.harga.toString()),
                       SizedBox(height: 29),
                       Text("Rating"),
                     ],

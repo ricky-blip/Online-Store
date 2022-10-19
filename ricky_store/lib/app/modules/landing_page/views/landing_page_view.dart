@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
 
 import 'package:get/get.dart';
+import 'package:ricky_store/app/data/models/product_recommended_model.dart';
+import 'package:ricky_store/app/widgets/recommended_products_widget.dart';
 
 import '../../../constant/color.dart';
 import '../../../data/models/product_new_model.dart';
 import '../../../widgets/new_products_widget.dart';
 import '../controllers/landing_page_controller.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class LandingPageView extends GetView<LandingPageController> {
   LandingPageView({Key? key}) : super(key: key);
@@ -79,23 +83,32 @@ class LandingPageView extends GetView<LandingPageController> {
                 //SECTION New Product
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: FutureBuilder<List<ProductNew>>(
-                    future: controller.getProductNew("new"),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Text("Waiting . . .");
-                      } else if (snapshot.hasData) {
-                        return Row(
-                          children: [
-                            ...snapshot.data!.map(
-                              (e) => NewProductsWidget(newProduct: e),
-                            ),
-                          ],
-                        );
-                      }
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 0,
+                      left: 15,
+                      right: 15,
+                      bottom: 0,
+                    ),
+                    child: FutureBuilder<List<ProductNew>>(
+                      future: controller.getProductNew("new"),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Text("Waiting . . .");
+                        } else if (snapshot.hasData) {
+                          return Row(
+                            children: [
+                              ...snapshot.data!.map(
+                                (e) => NewProductsWidget(newProduct: e),
+                              ),
+                            ],
+                          );
+                        }
 
-                      return Text("data");
-                    },
+                        return Text("data");
+                      },
+                    ),
                   ),
                 ),
 
@@ -111,7 +124,7 @@ class LandingPageView extends GetView<LandingPageController> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Recommended Products",
+                        "Recommended",
                         style: Get.textTheme.headline6,
                       ),
                       ElevatedButton(
@@ -121,9 +134,12 @@ class LandingPageView extends GetView<LandingPageController> {
                         onPressed: () {},
                         child: Row(
                           children: [
-                            Text("More"),
-                            SizedBox(width: 5),
-                            Icon(Icons.fast_forward_rounded),
+                            Text("MORE"),
+                            SizedBox(width: 2),
+                            Icon(
+                              Icons.apps_outlined,
+                              size: 30,
+                            ),
                           ],
                         ),
                       ),
@@ -132,16 +148,30 @@ class LandingPageView extends GetView<LandingPageController> {
                 ),
 
                 //SECTION Products Recommended
-                // AlignedGridView.count(
-                //   crossAxisCount: 2,
-                //   mainAxisSpacing: 2,
-                //   crossAxisSpacing: 2,
-                //   shrinkWrap: true,
-                //   physics: const NeverScrollableScrollPhysics(),
-                //   itemBuilder: (context, index) {
-                //     return Text("Test");
-                //   },
-                // ),
+                FutureBuilder<List<ProductRecommended>>(
+                  future: controller.getProductRecommended("recommended"),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Text("Waiting Data . . .");
+                    } else if (snapshot.hasData) {
+                      return AlignedGridView.count(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        crossAxisCount: 2,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          int sequence = index + 1;
+                          ProductRecommended products = snapshot.data![index];
+                          return RecommendedProductsWidget(
+                            recommendedW: products,
+                          );
+                        },
+                      );
+                    }
+
+                    return Text("data");
+                  },
+                ),
                 const SizedBox(height: 20),
               ],
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/constant/color.dart';
+import 'package:ricky_store/app/shared/constant/color.dart';
 
 import 'app/routes/app_pages.dart';
 

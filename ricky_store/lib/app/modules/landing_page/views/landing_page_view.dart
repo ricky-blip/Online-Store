@@ -3,13 +3,15 @@ import 'package:flutter/physics.dart';
 
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/product_recommended_model.dart';
-import 'package:ricky_store/app/widgets/recommended_products_widget.dart';
 
-import '../../../constant/color.dart';
+import '../../../shared/constant/color.dart';
 import '../../../data/models/product_new_model.dart';
-import '../../../widgets/new_products_widget.dart';
+
 import '../controllers/landing_page_controller.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+import '../widgets/new_products_widget.dart';
+import '../widgets/recommended_products_widget.dart';
 
 class LandingPageView extends GetView<LandingPageController> {
   LandingPageView({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import '../../config/config.dart';
+import '../../shared/config/config.dart';
 
 class ProductNew {
   //NOTE Contractor

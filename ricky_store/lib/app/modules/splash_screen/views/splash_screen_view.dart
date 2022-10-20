@@ -26,7 +26,7 @@ class SplashScreenView extends GetView<SplashScreenController> {
         child: Text(
           "Welcome to Ricky's Store",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 30,
             color: appWhite,
           ),
         ),

@@ -9,9 +9,6 @@ import '../../../data/models/products/product_new_model.dart';
 
 class LandingPageController extends GetxController {
   //SECTION Product New
-  //NOTE Variable for Product New
-  List<ProductNew> productNewList = <ProductNew>[];
-
   Future<List<ProductNew>> getProductNew(String apiNew) async {
     //NOTE Variable EndPoint
     String endPointNew = "";
@@ -42,7 +39,7 @@ class LandingPageController extends GetxController {
           );
         }
       } else {
-        productNewList = [];
+        listProductNew = [];
       }
     } catch (e) {
       print(e);
@@ -52,9 +49,6 @@ class LandingPageController extends GetxController {
   }
 
   //SECTION Product Recommended
-  //NOTE Variable for Recommended New
-  List<ProductRecommended> productRecommendedList = <ProductRecommended>[];
-
   Future<List<ProductRecommended>> getProductRecommended(
       String apiRecommended) async {
     //Variable EndPoint
@@ -89,6 +83,7 @@ class LandingPageController extends GetxController {
         listProductRecommended = [];
       }
     } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
 

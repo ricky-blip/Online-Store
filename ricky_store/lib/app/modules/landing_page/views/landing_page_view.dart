@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/product_recommended_model.dart';
+import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
+import 'package:ricky_store/app/routes/app_pages.dart';
 
 import '../../../shared/constant/color.dart';
-import '../../../data/models/product_new_model.dart';
+import '../../../data/models/products/product_new_model.dart';
 
 import '../controllers/landing_page_controller.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -129,20 +130,11 @@ class LandingPageView extends GetView<LandingPageController> {
                         "Recommended",
                         style: Get.textTheme.headline6,
                       ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: appBlue,
-                        ),
-                        onPressed: () {},
-                        child: Row(
-                          children: [
-                            Text("MORE"),
-                            SizedBox(width: 2),
-                            Icon(
-                              Icons.apps_outlined,
-                              size: 30,
-                            ),
-                          ],
+                      GestureDetector(
+                        onTap: () => Get.toNamed(Routes.PRODUCTS_LIST),
+                        child: Text(
+                          "See More",
+                          style: Get.textTheme.subtitle1,
                         ),
                       ),
                     ],

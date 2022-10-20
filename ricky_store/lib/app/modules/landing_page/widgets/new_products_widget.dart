@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
-import 'package:ricky_store/app/data/models/product_new_model.dart';
+import 'package:ricky_store/app/data/models/products/product_new_model.dart';
+
+import 'new_product_ratings_widget.dart';
 
 class NewProductsWidget extends StatelessWidget {
   final ProductNew newProduct;
@@ -23,6 +25,8 @@ class NewProductsWidget extends StatelessWidget {
           child: InkWell(
             onTap: () {},
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Ink.image(
                   image: NetworkImage(newProduct.gambar),
@@ -30,9 +34,31 @@ class NewProductsWidget extends StatelessWidget {
                   width: 250,
                   fit: BoxFit.contain,
                 ),
-                Text(newProduct.namaProduct),
-                Text(newProduct.harga.toString()),
-                Text("Rating"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        newProduct.namaProduct,
+                        style: Get.textTheme.subtitle1,
+                      ),
+                      SizedBox(height: 3),
+                      Text(
+                        Config.convertToIdr(newProduct.harga, 0),
+                        style: Get.textTheme.subtitle2,
+                      ),
+                      SizedBox(height: 7),
+                      Row(
+                        children: [
+                          RatingsWidget(starRatings: newProduct),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

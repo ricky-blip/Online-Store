@@ -23,6 +23,10 @@ void main() {
             color: appBlack,
             fontWeight: FontWeight.bold,
           ),
+          subtitle1: TextStyle(
+            color: appBlue,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     ),

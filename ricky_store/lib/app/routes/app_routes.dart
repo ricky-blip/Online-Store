@@ -8,6 +8,7 @@ abstract class Routes {
   static const LANDING_PAGE = _Paths.LANDING_PAGE;
   static const ORDER = _Paths.ORDER;
   static const PROFILE = _Paths.PROFILE;
+  static const PRODUCTS_LIST = _Paths.PRODUCTS_LIST;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const LANDING_PAGE = '/landing-page';
   static const ORDER = '/order';
   static const PROFILE = '/profile';
+  static const PRODUCTS_LIST = '/products-list';
 }

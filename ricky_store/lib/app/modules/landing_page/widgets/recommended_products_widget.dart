@@ -6,10 +6,11 @@ import 'package:ricky_store/app/shared/constant/color.dart';
 import '../../../shared/config/config.dart';
 import 'recommended_product_ratings_widget.dart';
 
+// ignore: must_be_immutable
 class RecommendedProductsWidget extends StatelessWidget {
   ProductRecommended recommendedW;
 
-  RecommendedProductsWidget({required this.recommendedW});
+  RecommendedProductsWidget({super.key, required this.recommendedW});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class RecommendedProductsWidget extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.42,
+            width: MediaQuery.of(context).size.width * 0.40,
             child: Card(
               elevation: 3,
               color: appWhite,
@@ -43,9 +44,7 @@ class RecommendedProductsWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 8),
                       Text(
-                        recommendedW.merk.merkProduct +
-                            " " +
-                            recommendedW.namaProduct,
+                        "${recommendedW.merk.merkProduct} ${recommendedW.namaProduct}",
                         style: Get.textTheme.subtitle1,
                       ),
                       SizedBox(height: 7),
@@ -56,7 +55,7 @@ class RecommendedProductsWidget extends StatelessWidget {
                       SizedBox(height: 15),
                       Row(
                         children: [
-                          RatingsWidget(starRatings: recommendedW),
+                          RatingsWidgetRecommended(starRatings: recommendedW),
                         ],
                       ),
                     ],

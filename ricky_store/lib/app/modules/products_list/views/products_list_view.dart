@@ -35,16 +35,20 @@ class ProductsListView extends GetView<ProductsListController> {
                         },
                         child: Icon(
                           Icons.arrow_back,
-                          size: 40,
+                          size: 30,
                         ),
                       ),
                       Expanded(
                         child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          // height: 70,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
                           child: TextField(
                             decoration: InputDecoration(
-                              suffixIcon: const Icon(Icons.search),
-                              hintText: "Search Products",
+                              suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.search),
+                              ),
+                              hintText: "Cari Merk Laptop",
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
                               ),

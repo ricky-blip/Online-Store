@@ -6,9 +6,9 @@ import 'package:ricky_store/app/data/models/products/product_new_model.dart';
 import 'package:ricky_store/app/modules/landing_page/widgets/new_products_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
-class RatingsWidget extends StatelessWidget {
+class RatingsWidgetNew extends StatelessWidget {
   //NOTE Constractor
-  RatingsWidget({super.key, required this.starRatings});
+  RatingsWidgetNew({super.key, required this.starRatings});
 
   final ProductNew starRatings;
 

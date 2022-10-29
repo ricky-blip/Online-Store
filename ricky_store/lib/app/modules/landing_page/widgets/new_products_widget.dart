@@ -52,7 +52,7 @@ class NewProductsWidget extends StatelessWidget {
                       SizedBox(height: 7),
                       Row(
                         children: [
-                          RatingsWidget(starRatings: newProduct),
+                          RatingsWidgetNew(starRatings: newProduct),
                         ],
                       ),
                       SizedBox(height: 10),

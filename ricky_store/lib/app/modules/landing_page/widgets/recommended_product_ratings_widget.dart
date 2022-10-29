@@ -7,9 +7,9 @@ import 'package:ricky_store/app/data/models/products/product_recommended_model.d
 import 'package:ricky_store/app/modules/landing_page/widgets/new_products_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
-class RatingsWidget extends StatelessWidget {
+class RatingsWidgetRecommended extends StatelessWidget {
   //NOTE Constractor
-  RatingsWidget({super.key, required this.starRatings});
+  const RatingsWidgetRecommended({super.key, required this.starRatings});
 
   final ProductRecommended starRatings;
 
@@ -20,7 +20,7 @@ class RatingsWidget extends StatelessWidget {
       children: [
         RatingBar.builder(
           ignoreGestures: true,
-          itemSize: 20,
+          itemSize: 13,
           initialRating: starRatings.rating.toDouble(),
           minRating: 1,
           direction: Axis.horizontal,
@@ -35,7 +35,7 @@ class RatingsWidget extends StatelessWidget {
             print(rating);
           },
         ),
-        const SizedBox(width: 10),
+        // const SizedBox(width: 10),
         Text(
           starRatings.rating.toString(),
           style: Get.textTheme.subtitle2,

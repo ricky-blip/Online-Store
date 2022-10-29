@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
 import 'package:ricky_store/app/modules/landing_page/widgets/recommended_product_ratings_widget.dart';
+import 'package:ricky_store/app/modules/products_list/widgets/products_list_rating_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../../../shared/config/config.dart';
@@ -22,7 +23,7 @@ class ProductListWidget extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.42,
+            width: MediaQuery.of(context).size.width * 0.40,
             child: Card(
               elevation: 3,
               color: appWhite,
@@ -34,32 +35,33 @@ class ProductListWidget extends StatelessWidget {
               child: InkWell(
                 onTap: () {},
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.network(
                         allProductList.gambar,
                         width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.contain,
+                        //tambahin height
+                        fit: BoxFit.cover,
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
-                        allProductList.merk.merkProduct +
-                            " " +
-                            allProductList.namaProduct,
+                        "${allProductList.merk.merkProduct} ${allProductList.namaProduct}",
                         style: Get.textTheme.subtitle1,
                       ),
-                      SizedBox(height: 7),
+                      const SizedBox(height: 7),
                       Text(
                         Config.convertToIdr(allProductList.harga, 0),
                         style: Get.textTheme.subtitle2,
                       ),
-                      SizedBox(height: 15),
-                      // Row(
-                      //   children: [
-                      //     RatingsWidget(starRatings: allProductList),
-                      //   ],
-                      // ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          RatingsWidgetProductList(starRatings: allProductList),
+                        ],
+                      ),
                     ],
                   ),
                 ),

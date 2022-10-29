@@ -48,10 +48,10 @@ class LandingPageView extends GetView<LandingPageController> {
                         GestureDetector(
                           onTap: () {},
                           child: const CircleAvatar(
-                            foregroundColor: appBlue,
+                            foregroundColor: appSoftBlue,
                             // backgroundColor: Colors.grey,
                             child: Icon(
-                              Icons.account_circle,
+                              Icons.info,
                               size: 40,
                             ),
                           ),
@@ -150,7 +150,7 @@ class LandingPageView extends GetView<LandingPageController> {
                     } else if (snapshot.hasData) {
                       return AlignedGridView.count(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         crossAxisCount: 2,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {

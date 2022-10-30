@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 import 'package:ricky_store/app/data/models/products/product_new_model.dart';
@@ -23,7 +24,9 @@ class NewProductsWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
           ),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(Routes.PRODUCTS_DETAIL);
+            },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -31,7 +34,7 @@ class NewProductsWidget extends StatelessWidget {
                 Ink.image(
                   image: NetworkImage(newProduct.gambar),
                   height: 250,
-                  width: 250,
+                  width: 300,
                   fit: BoxFit.contain,
                 ),
                 Padding(

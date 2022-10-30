@@ -37,19 +37,24 @@ class ProductListWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.network(
                         allProductList.gambar,
-                        width: MediaQuery.of(context).size.width,
+                        width: MediaQuery.of(context).size.width * 1,
                         //tambahin height
+                        height: 100,
                         fit: BoxFit.cover,
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "${allProductList.merk.merkProduct} ${allProductList.namaProduct}",
+                        allProductList.merk.merkProduct,
                         style: Get.textTheme.subtitle1,
+                      ),
+                      Text(
+                        allProductList.namaProduct,
+                        style: Get.textTheme.subtitle1,
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 7),
                       Text(

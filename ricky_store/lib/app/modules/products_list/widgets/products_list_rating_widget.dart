@@ -16,7 +16,7 @@ class RatingsWidgetProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RatingBar.builder(
           ignoreGestures: true,

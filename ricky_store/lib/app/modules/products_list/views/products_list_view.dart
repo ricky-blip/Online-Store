@@ -14,6 +14,32 @@ class ProductsListView extends GetView<ProductsListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
+      appBar: AppBar(
+        backgroundColor: appScaffoldBlue,
+        leading: Icon(Icons.abc),
+        title: Expanded(
+          child: Container(
+            height: 50,
+            margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+            child: TextField(
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amberAccent),
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.search),
+                ),
+                hintText: "Cari Merk Laptop",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: ListView(
           children: [

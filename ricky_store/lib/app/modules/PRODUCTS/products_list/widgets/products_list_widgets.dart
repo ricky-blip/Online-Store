@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ricky_store/app/data/models/products/product_list_model.dart';
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
+import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/recommended_product_ratings_widget.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_list/widgets/products_list_rating_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
-import '../../../shared/config/config.dart';
-import 'recommended_product_ratings_widget.dart';
+import '../../../../shared/config/config.dart';
 
-// ignore: must_be_immutable
-class RecommendedProductsWidget extends StatelessWidget {
-  ProductRecommended recommendedW;
+class ProductListWidget extends StatelessWidget {
+  ProductList allProductList;
 
-  RecommendedProductsWidget({super.key, required this.recommendedW});
+  ProductListWidget({super.key, required this.allProductList});
 
   @override
   Widget build(BuildContext context) {
@@ -34,28 +35,36 @@ class RecommendedProductsWidget extends StatelessWidget {
               child: InkWell(
                 onTap: () {},
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Image.network(
-                        recommendedW.gambar,
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.contain,
+                        allProductList.gambar,
+                        width: MediaQuery.of(context).size.width * 1,
+                        //tambahin height
+                        height: 100,
+                        fit: BoxFit.cover,
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
-                        "${recommendedW.merk.merkProduct} ${recommendedW.namaProduct}",
+                        allProductList.merk.merkProduct,
                         style: Get.textTheme.subtitle1,
                       ),
-                      SizedBox(height: 7),
                       Text(
-                        Config.convertToIdr(recommendedW.harga, 0),
+                        allProductList.namaProduct,
+                        style: Get.textTheme.subtitle1,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 7),
+                      Text(
+                        Config.convertToIdr(allProductList.harga, 0),
                         style: Get.textTheme.subtitle2,
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
-                          RatingsWidgetRecommended(starRatings: recommendedW),
+                          RatingsWidgetProductList(starRatings: allProductList),
                         ],
                       ),
                     ],

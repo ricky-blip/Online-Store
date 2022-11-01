@@ -3,24 +3,23 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
 import 'package:ricky_store/app/data/models/products/product_new_model.dart';
-import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
-import 'package:ricky_store/app/modules/landing_page/widgets/new_products_widget.dart';
+import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
-class RatingsWidgetProductList extends StatelessWidget {
+class RatingsWidgetNew extends StatelessWidget {
   //NOTE Constractor
-  const RatingsWidgetProductList({super.key, required this.starRatings});
+  RatingsWidgetNew({super.key, required this.starRatings});
 
-  final ProductList starRatings;
+  final ProductNew starRatings;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         RatingBar.builder(
           ignoreGestures: true,
-          itemSize: 13,
+          itemSize: 20,
           initialRating: starRatings.rating.toDouble(),
           minRating: 1,
           direction: Axis.horizontal,
@@ -35,7 +34,7 @@ class RatingsWidgetProductList extends StatelessWidget {
             print(rating);
           },
         ),
-        // const SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
           starRatings.rating.toString(),
           style: Get.textTheme.subtitle2,

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
 import 'package:ricky_store/app/data/models/products/product_new_model.dart';
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
-import 'package:ricky_store/app/modules/landing_page/widgets/new_products_widget.dart';
+import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 class RatingsWidgetRecommended extends StatelessWidget {

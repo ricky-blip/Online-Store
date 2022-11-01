@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as myhttp;
 import 'package:ricky_store/app/data/models/products/product_detail_model.dart';
 
-import '../../../shared/config/config.dart';
+import '../../../../shared/config/config.dart';
 
 class ProductsDetailController extends GetxController {
   //SECTION Product List

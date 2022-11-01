@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as myhttp;
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
 
-import '../../../shared/config/config.dart';
-import '../../../data/models/products/product_new_model.dart';
+import '../../../../shared/config/config.dart';
+import '../../../../data/models/products/product_new_model.dart';
 
 class LandingPageController extends GetxController {
   //SECTION Product New

@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
 
-import '../../../shared/constant/color.dart';
-import '../../../data/models/products/product_new_model.dart';
+import '../../../../shared/constant/color.dart';
+import '../../../../data/models/products/product_new_model.dart';
 
 import '../controllers/landing_page_controller.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

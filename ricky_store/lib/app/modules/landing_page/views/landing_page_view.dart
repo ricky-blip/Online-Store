@@ -32,7 +32,7 @@ class LandingPageView extends GetView<LandingPageController> {
                     left: 25,
                     right: 25,
                     top: 20,
-                    bottom: 35,
+                    bottom: 30,
                   ),
                   child: Container(
                     // color: Colors.amber,
@@ -41,7 +41,7 @@ class LandingPageView extends GetView<LandingPageController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Hi, User",
+                          "Welcome, User",
                           style: Get.textTheme.headline5,
                         ),
                         // Spacer(),

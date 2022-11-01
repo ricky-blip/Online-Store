@@ -35,7 +35,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView(),
+      page: () => const HomeView(),
       binding: HomeBinding(),
       transition: Transition.size,
       transitionDuration: const Duration(milliseconds: 700),
@@ -57,7 +57,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCTS_DETAIL,
-      page: () => const ProductsDetailView(),
+      page: () => ProductsDetailView(),
       binding: ProductsDetailBinding(),
     ),
   ];

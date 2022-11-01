@@ -14,32 +14,6 @@ class ProductsListView extends GetView<ProductsListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
-      appBar: AppBar(
-        backgroundColor: appScaffoldBlue,
-        leading: Icon(Icons.abc),
-        title: Expanded(
-          child: Container(
-            height: 50,
-            margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-            child: TextField(
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amberAccent),
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.search),
-                ),
-                hintText: "Cari Merk Laptop",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(24),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
       body: SafeArea(
         child: ListView(
           children: [
@@ -48,8 +22,8 @@ class ProductsListView extends GetView<ProductsListController> {
                 //SECTION Search Bar
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 25,
-                    right: 25,
+                    left: 10,
+                    right: 10,
                     top: 20,
                     bottom: 35,
                   ),
@@ -59,7 +33,7 @@ class ProductsListView extends GetView<ProductsListController> {
                         onTap: () {
                           Get.back();
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.arrow_back,
                           size: 30,
                         ),
@@ -67,12 +41,16 @@ class ProductsListView extends GetView<ProductsListController> {
                       Expanded(
                         child: Container(
                           // height: 70,
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          margin: const EdgeInsets.symmetric(horizontal: 7),
                           child: TextField(
+                            autofocus: true,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
                                 onPressed: () {},
-                                icon: const Icon(Icons.search),
+                                icon: const Icon(
+                                  Icons.search,
+                                  size: 30,
+                                ),
                               ),
                               hintText: "Cari Merk Laptop",
                               border: OutlineInputBorder(
@@ -91,15 +69,15 @@ class ProductsListView extends GetView<ProductsListController> {
                   future: controller.getProductAllList(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Text("Waiting Data . . .");
+                      return const Text("Waiting Data . . .");
                     } else if (snapshot.hasData) {
                       return AlignedGridView.count(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         crossAxisCount: 2,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          int sequence = index + 1;
+                          // int sequence = index + 1;
                           ProductList allListProducts = snapshot.data![index];
                           return ProductListWidget(
                             allProductList: allListProducts,
@@ -108,7 +86,7 @@ class ProductsListView extends GetView<ProductsListController> {
                       );
                     }
 
-                    return Text("data");
+                    return const Text("data");
                   },
                 ),
               ],

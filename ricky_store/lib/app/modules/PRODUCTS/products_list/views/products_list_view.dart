@@ -3,13 +3,17 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_search/controllers/products_search_controller.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_search/views/products_search_view.dart';
+import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/products_list_controller.dart';
 import '../widgets/products_list_widgets.dart';
 
 class ProductsListView extends GetView<ProductsListController> {
-  const ProductsListView({Key? key}) : super(key: key);
+  ProductsListView({Key? key}) : super(key: key);
+  final pSearchController = Get.put(ProductsSearchController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,10 +47,19 @@ class ProductsListView extends GetView<ProductsListController> {
                           // height: 70,
                           margin: const EdgeInsets.symmetric(horizontal: 7),
                           child: TextField(
+                            controller: pSearchController.keywordInput,
                             autofocus: true,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(
+                                    ProductsSearchView(
+                                      keywordInput:
+                                          pSearchController.keywordInput.text,
+                                    ),
+                                  );
+                                  pSearchController.keywordInput.clear();
+                                },
                                 icon: const Icon(
                                   Icons.search,
                                   size: 30,

@@ -58,7 +58,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCTS_LIST,
-      page: () => const ProductsListView(),
+      page: () => ProductsListView(),
       binding: ProductsListBinding(),
     ),
     GetPage(
@@ -68,7 +68,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCTS_SEARCH,
-      page: () => const ProductsSearchView(),
+      page: () =>
+          const ProductsSearchView(keywordInput: Routes.PRODUCTS_SEARCH),
       binding: ProductsSearchBinding(),
     ),
   ];

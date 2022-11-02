@@ -42,17 +42,22 @@ class RecommendedProductsWidget extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         fit: BoxFit.contain,
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
-                        "${recommendedW.merk.merkProduct} ${recommendedW.namaProduct}",
+                        "${recommendedW.merk.merkProduct} ",
                         style: Get.textTheme.subtitle1,
                       ),
-                      SizedBox(height: 7),
+                      Text(
+                        recommendedW.namaProduct,
+                        style: Get.textTheme.subtitle1,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 7),
                       Text(
                         Config.convertToIdr(recommendedW.harga, 0),
                         style: Get.textTheme.subtitle2,
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         children: [
                           RatingsWidgetRecommended(starRatings: recommendedW),

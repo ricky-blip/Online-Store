@@ -13,8 +13,8 @@ import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/views/order_view.dart';
-import '../modules/products_search/bindings/products_search_binding.dart';
-import '../modules/products_search/views/products_search_view.dart';
+import '../modules/PRODUCTS/products_search/bindings/products_search_binding.dart';
+import '../modules/PRODUCTS/products_search/views/products_search_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 

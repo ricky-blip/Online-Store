@@ -76,6 +76,8 @@ class ProductsListView extends GetView<ProductsListController> {
                   ),
                 ),
 
+                //SECTION CHIP Product Merk
+
                 //SECTION Product List
                 FutureBuilder<List<ProductList>>(
                   future: controller.getProductAllList(),

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/controllers/products_search_controller.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/views/products_search_view.dart';
-import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/products_list_controller.dart';

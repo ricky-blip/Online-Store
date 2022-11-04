@@ -1,5 +1,5 @@
-class ProductMerk {
-  ProductMerk({
+class MerkList {
+  MerkList({
     required this.id,
     required this.merkProduct,
     required this.status,
@@ -13,7 +13,7 @@ class ProductMerk {
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory ProductMerk.fromJson(Map<String, dynamic> json) => ProductMerk(
+  factory MerkList.fromJson(Map<String, dynamic> json) => MerkList(
         id: json["id"],
         merkProduct: json["merk_product"],
         status: json["status"],

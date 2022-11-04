@@ -3,10 +3,10 @@ import 'package:intl/intl.dart';
 class Config {
   //url untuk akses endpoint API
 
-  static String urlApi = "http://172.20.10.2:8000/api/";
+  static String urlApi = "http://192.168.113.168:8000/api/";
 
   //url untuk akses endpoint API
-  static String urlMain = "http://172.20.10.2:8000/";
+  static String urlMain = "http://192.168.113.168:8000/";
 
   //format idr
   static String convertToIdr(dynamic number, int decimalDigit) {

@@ -74,10 +74,10 @@ class AppPages {
           const ProductsSearchView(keywordInput: Routes.PRODUCTS_SEARCH),
       binding: ProductsSearchBinding(),
     ),
-    GetPage(
-      name: _Paths.PRODUCTS_MERK,
-      page: () => const ProductsMerkView(),
-      binding: ProductsMerkBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.PRODUCTS_MERK,
+    //   page: () => ProductsMerkView(),
+    //   binding: ProductsMerkBinding(),
+    // ),
   ];
 }

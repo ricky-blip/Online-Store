@@ -3,6 +3,10 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
+import 'package:ricky_store/app/data/models/merk/merk_list_model.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_merk/controllers/products_merk_controller.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_merk/views/products_merk_view.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_merk/widgets/products_merk_chip_widget.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/controllers/products_search_controller.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/views/products_search_view.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
@@ -10,9 +14,13 @@ import 'package:ricky_store/app/shared/constant/color.dart';
 import '../controllers/products_list_controller.dart';
 import '../widgets/products_list_widgets.dart';
 
+// ignore: must_be_immutable
 class ProductsListView extends GetView<ProductsListController> {
   ProductsListView({Key? key}) : super(key: key);
   final pSearchController = Get.put(ProductsSearchController());
+  final pMerkController = Get.put(ProductsMerkController());
+
+  String merkLabel = "merk";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +36,7 @@ class ProductsListView extends GetView<ProductsListController> {
                     left: 10,
                     right: 10,
                     top: 20,
-                    bottom: 35,
+                    bottom: 10,
                   ),
                   child: Row(
                     children: [
@@ -64,7 +72,7 @@ class ProductsListView extends GetView<ProductsListController> {
                                   size: 30,
                                 ),
                               ),
-                              hintText: "Cari Merk Laptop",
+                              hintText: "Search",
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
                               ),
@@ -77,6 +85,39 @@ class ProductsListView extends GetView<ProductsListController> {
                 ),
 
                 //SECTION CHIP Product Merk
+                FutureBuilder<List<MerkList>>(
+                  future: pMerkController.getMerk(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Text("Waiting");
+                    } else if (snapshot.hasData) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            ...snapshot.data!.map(
+                              (e) => GestureDetector(
+                                onTap: () => Get.to(
+                                  ProductsMerkView(merkId: e.id),
+                                ),
+                                child: MerkChipWidget(
+                                  merk: e,
+                                  colorChip: appWhite,
+                                  iconChip: const Icon(Icons.laptop),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else if (snapshot.data!.isEmpty) {
+                      return Text("Data Kosong");
+                    } else if (snapshot.hasError) {
+                      return Text("Koneksi Error");
+                    }
+                    return const SizedBox();
+                  },
+                ),
 
                 //SECTION Product List
                 FutureBuilder<List<ProductList>>(

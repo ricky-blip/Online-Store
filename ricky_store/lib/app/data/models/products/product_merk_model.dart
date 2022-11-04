@@ -8,7 +8,7 @@ class ProductMerk {
   });
 
   int id;
-  String merkProduct;
+  String merkProduct; 
   String status;
   DateTime createdAt;
   DateTime updatedAt;

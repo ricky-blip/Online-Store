@@ -26,7 +26,7 @@ class NewProductsWidget extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              Get.toNamed(Routes.PRODUCTS_DETAIL);
+              Get.to(ProductsDetailView(productDetails: newProduct));
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

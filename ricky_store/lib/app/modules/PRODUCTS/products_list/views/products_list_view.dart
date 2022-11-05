@@ -25,98 +25,88 @@ class ProductsListView extends GetView<ProductsListController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
+      appBar: AppBar(
+        flexibleSpace: SafeArea(
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 57, right: 2, top: 3, bottom: 3),
+            child: Container(
+              // width: MediaQuery.of(context).size.width * 0.87,
+              // height: MediaQuery.of(context).size.height * 0.8,
+              // color: Colors.amber,
+              child: TextField(
+                controller: pSearchController.keywordInput,
+                autofocus: true,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      Get.to(
+                        ProductsSearchView(
+                          keywordInput: pSearchController.keywordInput.text,
+                        ),
+                      );
+                      pSearchController.keywordInput.clear();
+                    },
+                    icon: const Icon(
+                      Icons.search,
+                      size: 30,
+                    ),
+                  ),
+                  hintText: "Search",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        backgroundColor: appScaffoldBlue,
+        iconTheme: IconThemeData(color: appBlack),
+        elevation: 0,
+        actions: [],
+      ),
       body: SafeArea(
         child: ListView(
           children: [
             Column(
               children: [
-                //SECTION Search Bar
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                    right: 10,
-                    top: 20,
-                    bottom: 10,
-                  ),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: const Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          // height: 70,
-                          margin: const EdgeInsets.symmetric(horizontal: 7),
-                          child: TextField(
-                            controller: pSearchController.keywordInput,
-                            autofocus: true,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  Get.to(
-                                    ProductsSearchView(
-                                      keywordInput:
-                                          pSearchController.keywordInput.text,
-                                    ),
-                                  );
-                                  pSearchController.keywordInput.clear();
-                                },
-                                icon: const Icon(
-                                  Icons.search,
-                                  size: 30,
-                                ),
-                              ),
-                              hintText: "Search",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(24),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
                 //SECTION CHIP Product Merk
-                FutureBuilder<List<MerkList>>(
-                  future: pMerkController.getMerk(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Waiting");
-                    } else if (snapshot.hasData) {
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            ...snapshot.data!.map(
-                              (e) => GestureDetector(
-                                onTap: () => Get.to(
-                                  ProductsMerkView(merkId: e.id),
-                                ),
-                                child: MerkChipWidget(
-                                  merk: e,
-                                  colorChip: appWhite,
-                                  iconChip: const Icon(Icons.laptop),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: FutureBuilder<List<MerkList>>(
+                    future: pMerkController.getMerk(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Waiting");
+                      } else if (snapshot.hasData) {
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              ...snapshot.data!.map(
+                                (e) => GestureDetector(
+                                  onTap: () => Get.to(
+                                    ProductsMerkView(merkId: e.id),
+                                  ),
+                                  child: MerkChipWidget(
+                                    merk: e,
+                                    colorChip: appWhite,
+                                    iconChip: const Icon(Icons.laptop),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      );
-                    } else if (snapshot.data!.isEmpty) {
-                      return Text("Data Kosong");
-                    } else if (snapshot.hasError) {
-                      return Text("Koneksi Error");
-                    }
-                    return const SizedBox();
-                  },
+                            ],
+                          ),
+                        );
+                      } else if (snapshot.data!.isEmpty) {
+                        return Text("Data Kosong");
+                      } else if (snapshot.hasError) {
+                        return Text("Koneksi Error");
+                      }
+                      return const SizedBox();
+                    },
+                  ),
                 ),
 
                 //SECTION Product List

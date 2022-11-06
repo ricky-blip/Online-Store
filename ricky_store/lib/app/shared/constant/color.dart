@@ -6,3 +6,4 @@ const appScaffoldBlue = Color.fromARGB(255, 208, 236, 253);
 const appRed = Colors.red;
 const appBlack = Colors.black;
 const appWhite = Colors.white;
+const appGreen = Colors.green;

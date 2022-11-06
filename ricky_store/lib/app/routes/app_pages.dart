@@ -17,8 +17,8 @@ import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/views/order_view.dart';
 import '../modules/PRODUCTS/products_merk/bindings/products_merk_binding.dart';
 import '../modules/PRODUCTS/products_merk/views/products_merk_view.dart';
-import '../modules/profile/bindings/profile_binding.dart';
-import '../modules/profile/views/profile_view.dart';
+import '../modules/Authentication/profile/bindings/profile_binding.dart';
+import '../modules/Authentication/profile/views/profile_view.dart';
 
 part 'app_routes.dart';
 

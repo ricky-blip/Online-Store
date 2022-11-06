@@ -4,8 +4,11 @@ import 'package:get/get.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import 'app/routes/app_pages.dart';
+import 'package:sp_util/sp_util.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SpUtil.getInstance();
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

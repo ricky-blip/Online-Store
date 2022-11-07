@@ -8,7 +8,7 @@ import 'package:sp_util/sp_util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SpUtil.getInstance();              
+  await SpUtil.getInstance();
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,

@@ -12,7 +12,7 @@ class RegisterView extends GetView<RegisterController> {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
       appBar: AppBar(
-        iconTheme: IconThemeData(color: appBlack),
+        iconTheme: const IconThemeData(color: appBlack),
         backgroundColor: appScaffoldBlue,
         elevation: 0,
         title: Text(
@@ -44,10 +44,9 @@ class RegisterView extends GetView<RegisterController> {
                       bottom: 10,
                     ),
                     child: TextField(
-                      // controller: authC.namaLengkap,
-                      // style: greyTextStyle.copyWith(fontSize: 12),
+                      controller: controller.fullName,
                       style: Get.textTheme.subtitle1,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Full Name",
                       ),
@@ -61,17 +60,16 @@ class RegisterView extends GetView<RegisterController> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
                       left: 20,
                       right: 20,
                       top: 10,
                       bottom: 10,
                     ),
                     child: TextField(
-                      // controller: authC.namaLengkap,
-                      // style: greyTextStyle.copyWith(fontSize: 12),
-                      decoration: InputDecoration(
+                      controller: controller.email,
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Email",
                       ),
@@ -85,21 +83,31 @@ class RegisterView extends GetView<RegisterController> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
                       left: 20,
                       right: 20,
                       top: 10,
                       bottom: 10,
                     ),
-                    child: TextField(
-                      // controller: authC.namaLengkap,
-                      // style: greyTextStyle.copyWith(fontSize: 12),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Password",
-                      ),
-                    ),
+                    child: Obx(() => TextField(
+                          controller: controller.password,
+                          obscureText: controller.obscure.value,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Password",
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isObscure();
+                              },
+                              icon: Icon(
+                                controller.obscure.value == true
+                                    ? Icons.remove_red_eye_sharp
+                                    : Icons.visibility_off,
+                              ),
+                            ),
+                          ),
+                        )),
                   ),
                 ),
                 const SizedBox(height: 31),
@@ -108,7 +116,9 @@ class RegisterView extends GetView<RegisterController> {
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.register();
+                    },
                     child: Text(
                       "Sign Up",
                       style: TextStyle(fontSize: 20),

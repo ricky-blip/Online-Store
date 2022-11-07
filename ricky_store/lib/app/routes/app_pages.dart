@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
 
+import '../modules/Authentication/profile/bindings/profile_binding.dart';
+import '../modules/Authentication/profile/views/profile_view.dart';
 import '../modules/PRODUCTS/products_detail/bindings/products_detail_binding.dart';
 import '../modules/PRODUCTS/products_detail/views/products_detail_view.dart';
 import '../modules/PRODUCTS/products_list/bindings/products_list_binding.dart';
 import '../modules/PRODUCTS/products_list/views/products_list_view.dart';
+import '../modules/PRODUCTS/products_merk/bindings/products_merk_binding.dart';
+import '../modules/PRODUCTS/products_merk/views/products_merk_view.dart';
 import '../modules/PRODUCTS/products_search/bindings/products_search_binding.dart';
 import '../modules/PRODUCTS/products_search/views/products_search_view.dart';
 import '../modules/STARTED/home/bindings/home_binding.dart';
@@ -15,10 +19,8 @@ import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/views/order_view.dart';
-import '../modules/PRODUCTS/products_merk/bindings/products_merk_binding.dart';
-import '../modules/PRODUCTS/products_merk/views/products_merk_view.dart';
-import '../modules/Authentication/profile/bindings/profile_binding.dart';
-import '../modules/Authentication/profile/views/profile_view.dart';
+import '../modules/Authentication/register/bindings/register_binding.dart';
+import '../modules/Authentication/register/views/register_view.dart';
 
 part 'app_routes.dart';
 
@@ -79,5 +81,10 @@ class AppPages {
     //   page: () => ProductsMerkView(),
     //   binding: ProductsMerkBinding(),
     // ),
+    GetPage(
+      name: _Paths.REGISTER,
+      page: () => const RegisterView(),
+      binding: RegisterBinding(),
+    ),
   ];
 }

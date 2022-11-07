@@ -8,11 +8,11 @@ import 'package:sp_util/sp_util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SpUtil.getInstance();
+  await SpUtil.getInstance();              
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Ricky's Store Apps",
+      title: "Ricky's Online Store",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: ThemeData(

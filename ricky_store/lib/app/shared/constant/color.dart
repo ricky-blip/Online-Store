@@ -7,3 +7,4 @@ const appRed = Colors.red;
 const appBlack = Colors.black;
 const appWhite = Colors.white;
 const appGreen = Colors.green;
+const appTransparent = Colors.transparent;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/register_controller.dart';
@@ -15,11 +16,26 @@ class RegisterView extends GetView<RegisterController> {
         iconTheme: const IconThemeData(color: appBlack),
         backgroundColor: appScaffoldBlue,
         elevation: 0,
-        title: Text(
-          'Register',
-          style: Get.textTheme.headline5,
-        ),
-        centerTitle: true,
+        actions: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                "already have an account?",
+                style: Get.textTheme.subtitle2,
+              ),
+              TextButton(
+                onPressed: () {
+                  Get.offNamed(Routes.LOGIN);
+                },
+                child: Text(
+                  "Login Now",
+                  style: Get.textTheme.subtitle1,
+                ),
+              )
+            ],
+          ),
+        ],
       ),
       body: ListView(
         children: [
@@ -90,24 +106,26 @@ class RegisterView extends GetView<RegisterController> {
                       top: 10,
                       bottom: 10,
                     ),
-                    child: Obx(() => TextField(
-                          controller: controller.password,
-                          obscureText: controller.obscure.value,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Password",
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                controller.isObscure();
-                              },
-                              icon: Icon(
-                                controller.obscure.value == true
-                                    ? Icons.remove_red_eye_sharp
-                                    : Icons.visibility_off,
-                              ),
+                    child: Obx(
+                      () => TextField(
+                        controller: controller.password,
+                        obscureText: controller.obscure.value,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Password",
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.isObscure();
+                            },
+                            icon: Icon(
+                              controller.obscure.value == true
+                                  ? Icons.remove_red_eye_sharp
+                                  : Icons.visibility_off,
                             ),
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 31),

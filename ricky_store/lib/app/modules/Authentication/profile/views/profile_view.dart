@@ -94,7 +94,7 @@ class ProfileView extends GetView<ProfileController> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.toNamed(Routes.PROFILE);
+                        Get.toNamed(Routes.LOGIN);
                       },
                       child: Text(
                         "Change Account",

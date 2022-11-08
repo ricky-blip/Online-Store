@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/Authentication/profile/bindings/profile_binding.dart';
 import '../modules/Authentication/profile/views/profile_view.dart';
+import '../modules/Authentication/register/bindings/register_binding.dart';
+import '../modules/Authentication/register/views/register_view.dart';
 import '../modules/PRODUCTS/products_detail/bindings/products_detail_binding.dart';
 import '../modules/PRODUCTS/products_detail/views/products_detail_view.dart';
 import '../modules/PRODUCTS/products_list/bindings/products_list_binding.dart';
@@ -17,10 +19,10 @@ import '../modules/STARTED/landing_page/views/landing_page_view.dart';
 import '../modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
+import '../modules/Authentication/login/bindings/login_binding.dart';
+import '../modules/Authentication/login/views/login_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/views/order_view.dart';
-import '../modules/Authentication/register/bindings/register_binding.dart';
-import '../modules/Authentication/register/views/register_view.dart';
 
 part 'app_routes.dart';
 
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOGIN,
+      page: () => const LoginView(),
+      binding: LoginBinding(),
     ),
   ];
 }

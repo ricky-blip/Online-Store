@@ -68,8 +68,8 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 50),
-                  Container(
+                  const SizedBox(height: 50),
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 50,
                     child: ElevatedButton(
@@ -88,12 +88,14 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Container(
+                  const SizedBox(height: 10),
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(Routes.PROFILE);
+                      },
                       child: Text(
                         "Change Account",
                         style: TextStyle(fontSize: 20),
@@ -106,7 +108,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: 50,

@@ -13,27 +13,31 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: appBlack),
         backgroundColor: appScaffoldBlue,
         elevation: 0,
         actions: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                "don't have an account yet?",
-                style: Get.textTheme.subtitle2,
-              ),
-              TextButton(
-                onPressed: () {
-                  Get.offNamed(Routes.REGISTER);
-                },
-                child: Text(
-                  "Register Now",
-                  style: Get.textTheme.subtitle1,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "don't have an account yet?",
+                  style: Get.textTheme.subtitle2,
                 ),
-              )
-            ],
+                TextButton(
+                  onPressed: () {
+                    Get.offNamed(Routes.REGISTER);
+                  },
+                  child: Text(
+                    "Register Now",
+                    style: Get.textTheme.subtitle1,
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),
@@ -120,7 +124,7 @@ class LoginView extends GetView<LoginController> {
                 ),
                 const SizedBox(height: 31),
                 //NOTE Section 3 (BUTTON SIGN IN)
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
                   child: ElevatedButton(

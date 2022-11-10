@@ -9,7 +9,7 @@ import 'package:sp_util/sp_util.dart';
 
 class LoginController extends GetxController {
   //NOTE Field
-  String endPointRegister = "${Config.urlApi}login";
+  String endPointLogin = "${Config.urlApi}login";
 
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -23,9 +23,9 @@ class LoginController extends GetxController {
   }
 
   //NOTE Function
-  Future register() async {
+  Future login() async {
     //field Endpoint from convert String_endPoint to HTTP
-    var myUrl = Uri.parse(endPointRegister);
+    var myUrl = Uri.parse(endPointLogin);
 
     try {
       //SECTION 1: Listing data from EndPoint

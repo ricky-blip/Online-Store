@@ -80,7 +80,7 @@ class LoginView extends GetView<LoginController> {
                       bottom: 10,
                     ),
                     child: TextField(
-                      // controller: controller.email,
+                      controller: controller.email,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Email",
@@ -95,29 +95,31 @@ class LoginView extends GetView<LoginController> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
                       left: 20,
                       right: 20,
                       top: 10,
                       bottom: 10,
                     ),
-                    child: TextField(
-                      // controller: controller.password,
-                      // obscureText: controller.obscure.value,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Password",
-                        // suffixIcon: IconButton(
-                        //   onPressed: () {
-                        //     controller.isObscure();
-                        //   },
-                        //   icon: Icon(
-                        //     controller.obscure.value == true
-                        //         ? Icons.remove_red_eye_sharp
-                        //         : Icons.visibility_off,
-                        //   ),
-                        // ),
+                    child: Obx(
+                      () => TextField(
+                        controller: controller.password,
+                        obscureText: controller.obscure.value,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Password",
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.isObscure();
+                            },
+                            icon: Icon(
+                              controller.obscure.value == true
+                                  ? Icons.remove_red_eye_sharp
+                                  : Icons.visibility_off,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -127,17 +129,25 @@ class LoginView extends GetView<LoginController> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: appSoftBlue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                  child: Obx(
+                    () => ElevatedButton(
+                      onPressed: () {
+                        controller.login();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: appSoftBlue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                       ),
+                      child: controller.isLoading.value == true
+                          ? const CircularProgressIndicator(
+                              color: appWhite,
+                            )
+                          : const Text(
+                              "Sign In",
+                              style: TextStyle(fontSize: 20),
+                            ),
                     ),
                   ),
                 ),

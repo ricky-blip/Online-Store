@@ -1,23 +1,32 @@
 import 'package:get/get.dart';
+import 'package:ricky_store/app/routes/app_pages.dart';
+import 'package:ricky_store/app/shared/constant/color.dart';
+import 'package:sp_util/sp_util.dart';
 
 class ProfileController extends GetxController {
-  //TODO: Implement ProfileController
+  //SECTION Logout
+  void logout() {
+    try {
+      //remove data/cache from memory device
+      SpUtil.clear();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+      //jalankan pesan berhasil
+      Get.snackbar(
+        "Success",
+        "Log Out!",
+        backgroundColor: appGreen,
+      );
+
+      //redirect to Home
+      Get.offAll(Routes.HOME);
+    } catch (e) {
+      Get.snackbar(
+        "Failed",
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: appRed,
+        colorText: appWhite,
+      );
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

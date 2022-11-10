@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
+import 'package:sp_util/sp_util.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -34,19 +35,18 @@ class ProfileView extends GetView<ProfileController> {
                       Container(
                         child: Center(
                           child: Column(
-                            children: const [
-                              CircleAvatar(
+                            children: [
+                              const CircleAvatar(
                                 backgroundImage:
                                     NetworkImage("https://i.pravatar.cc/300"),
                                 minRadius: 70,
                                 maxRadius: 100,
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Text(
-                                //NOTE menambahkan spUtil ke name Profile
-                                // SpUtil.getString("name_user").toString(),
-                                "Name",
-                                style: TextStyle(
+                                // NOTE get spUtil ke name Profile
+                                SpUtil.getString("name_user").toString(),
+                                style: const TextStyle(
                                   fontSize: 24,
                                   color: appWhite,
                                   fontWeight: FontWeight.bold,
@@ -54,7 +54,7 @@ class ProfileView extends GetView<ProfileController> {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                "Email123456789@mail.com",
+                                SpUtil.getString("email_user").toString(),
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: appWhite,
@@ -113,16 +113,18 @@ class ProfileView extends GetView<ProfileController> {
                     width: MediaQuery.of(context).size.width,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Log Out",
-                        style: TextStyle(fontSize: 20),
-                      ),
+                      onPressed: () {
+                        controller.logout();
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: appRed,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
+                      ),
+                      child: const Text(
+                        "Log Out",
+                        style: TextStyle(fontSize: 20),
                       ),
                     ),
                   ),

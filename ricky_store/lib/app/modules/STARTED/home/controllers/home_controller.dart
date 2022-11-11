@@ -10,6 +10,6 @@ class HomeController extends GetxController {
   final List screen = [
     LandingPageView(),
     const OrderView(),
-    const ProfileView(),
+    ProfileView(),
   ];
 }

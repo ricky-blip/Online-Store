@@ -4,6 +4,7 @@ import 'package:flutter/physics.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
+import 'package:sp_util/sp_util.dart';
 
 import '../../../../shared/constant/color.dart';
 import '../../../../data/models/products/product_new_model.dart';
@@ -41,7 +42,7 @@ class LandingPageView extends GetView<LandingPageController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Welcome, User",
+                          "${SpUtil.getString("name_user").toString() == "Hey" ? "User" : "Welcome"} ",
                           style: Get.textTheme.headline5,
                         ),
                         // Spacer(),

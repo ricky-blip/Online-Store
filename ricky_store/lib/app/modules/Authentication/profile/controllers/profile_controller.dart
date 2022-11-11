@@ -18,7 +18,7 @@ class ProfileController extends GetxController {
       );
 
       //redirect to Home
-      Get.offAll(Routes.HOME);
+      Get.offAllNamed(Routes.HOME);
     } catch (e) {
       Get.snackbar(
         "Failed",

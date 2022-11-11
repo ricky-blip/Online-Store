@@ -8,7 +8,10 @@ import 'package:sp_util/sp_util.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+  ProfileView({Key? key}) : super(key: key);
+
+  final profileController = Get.lazyPut(() => ProfileController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,7 @@ class ProfileView extends GetView<ProfileController> {
                               const SizedBox(height: 10),
                               Text(
                                 // NOTE get spUtil ke name Profile
-                                SpUtil.getString("name_user").toString(),
+                                "${SpUtil.getString("name_user").toString()} ",
                                 style: const TextStyle(
                                   fontSize: 24,
                                   color: appWhite,
@@ -109,7 +112,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Container(
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 50,
                     child: ElevatedButton(

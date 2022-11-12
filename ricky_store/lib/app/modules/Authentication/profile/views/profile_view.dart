@@ -55,7 +55,7 @@ class ProfileView extends GetView<ProfileController> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 SpUtil.getString("email_user").toString(),
                                 style: TextStyle(
@@ -64,7 +64,7 @@ class ProfileView extends GetView<ProfileController> {
                                   fontStyle: FontStyle.italic,
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                             ],
                           ),
                         ),

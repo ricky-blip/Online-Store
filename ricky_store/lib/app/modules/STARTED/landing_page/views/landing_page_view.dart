@@ -42,21 +42,29 @@ class LandingPageView extends GetView<LandingPageController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${SpUtil.getString("name_user").toString() == "Hey" ? "User" : "Welcome"} ",
-                          style: Get.textTheme.headline5,
+                          //jika spUtil nya kosong "" tampilkan Welcome, selain itu(jika login) tampilkan nama user
+                          SpUtil.getString("name_user").toString() == ""
+                              ? "Welcome"
+                              : "Welcome Back, ${SpUtil.getString("name_user")}",
+                          style: Get.textTheme.headline6,
                         ),
-                        // Spacer(),
-                        GestureDetector(
-                          onTap: () {},
-                          child: const CircleAvatar(
-                            foregroundColor: appSoftBlue,
-                            // backgroundColor: Colors.grey,
-                            child: Icon(
-                              Icons.info,
-                              size: 40,
-                            ),
-                          ),
+                        const CircleAvatar(
+                          backgroundImage:
+                              NetworkImage("https://i.pravatar.cc/300"),
+                          minRadius: 10,
+                          maxRadius: 20,
                         ),
+                        // GestureDetector(
+                        //   onTap: () {},
+                        //   child: const CircleAvatar(
+                        //     foregroundColor: appSoftBlue,
+                        //     // backgroundColor: Colors.grey,
+                        //     child: Icon(
+                        //       Icons.info,
+                        //       size: 40,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

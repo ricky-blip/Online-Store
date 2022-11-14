@@ -11,8 +11,8 @@ import '../controllers/products_detail_controller.dart';
 
 // ignore: must_be_immutable
 class ProductsDetailView extends GetView<ProductsDetailController> {
-  ProductsDetailView({super.key, required this.productDetails});
-  final ProductNew productDetails;
+  ProductsDetailView({super.key, required this.productNewDetails});
+  final ProductNew productNewDetails;
 
   final pdetailsC = Get.lazyPut(() => ProductsDetailController());
 
@@ -21,6 +21,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
       appBar: AppBar(
+        // backgroundColor: appScaffoldBlue,
         title: const Text("Detail Product"),
       ),
       body: SafeArea(
@@ -30,7 +31,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
             children: [
               //NOTE Stack 1
               Image.network(
-                productDetails.gambar,
+                productNewDetails.gambar,
                 width: MediaQuery.of(context).size.width,
                 height: 350,
                 fit: BoxFit.cover,
@@ -84,7 +85,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${productDetails.merk.merkProduct} ${productDetails.namaProduct}",
+                                    "${productNewDetails.merk.merkProduct} ${productNewDetails.namaProduct}",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -97,7 +98,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
                                   Row(
                                     children: [
                                       RatingsWidgetNew(
-                                        starRatings: productDetails,
+                                        starRatings: productNewDetails,
                                       ),
                                     ],
                                   ),
@@ -157,7 +158,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
                                 ),
                               ),
                               const SizedBox(height: 12),
-                              HtmlWidget(productDetails.spesifikasi),
+                              HtmlWidget(productNewDetails.spesifikasi),
                               const SizedBox(height: 30),
                               const Text(
                                 "Spesifikasi",
@@ -168,7 +169,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
                                 ),
                               ),
                               const SizedBox(height: 12),
-                              HtmlWidget(productDetails.spesifikasi),
+                              HtmlWidget(productNewDetails.spesifikasi),
                             ],
                           ),
                         ],
@@ -183,11 +184,12 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
       ),
       //NOTE Bottom Navigation Bar
       bottomNavigationBar: BottomAppBar(
+        color: appScaffoldBlue,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 80,
+            height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -202,8 +204,8 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
                       ),
                     ),
                     Text(
-                      Config.convertToIdr(productDetails.harga, 0),
-                      style: TextStyle(
+                      Config.convertToIdr(productNewDetails.harga, 0),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
                       ),
@@ -214,7 +216,7 @@ class ProductsDetailView extends GetView<ProductsDetailController> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: appScaffoldBlue,
+                        backgroundColor: appSoftBlue,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

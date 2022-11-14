@@ -5,7 +5,7 @@ import '../modules/Authentication/profile/views/profile_view.dart';
 import '../modules/Authentication/register/bindings/register_binding.dart';
 import '../modules/Authentication/register/views/register_view.dart';
 import '../modules/PRODUCTS/products_detail/bindings/products_detail_binding.dart';
-import '../modules/PRODUCTS/products_detail/views/products_detail_view.dart';
+import '../modules/PRODUCTS/products_detail/views/products_detail_new_view.dart';
 import '../modules/PRODUCTS/products_list/bindings/products_list_binding.dart';
 import '../modules/PRODUCTS/products_list/views/products_list_view.dart';
 import '../modules/PRODUCTS/products_merk/bindings/products_merk_binding.dart';
@@ -69,7 +69,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCTS_DETAIL,
-      page: () => ProductsDetailView(productDetails: newProduct),
+      page: () => ProductsDetailView(productNewDetails: newProduct),
       binding: ProductsDetailBinding(),
     ),
     GetPage(

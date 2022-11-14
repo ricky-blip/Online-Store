@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_view.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_new_view.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
@@ -26,7 +26,7 @@ class NewProductsWidget extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              Get.to(ProductsDetailView(productDetails: newProduct));
+              Get.to(ProductsDetailView(productNewDetails: newProduct));
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

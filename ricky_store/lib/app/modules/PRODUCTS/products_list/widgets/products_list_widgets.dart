@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_list_view.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_list/widgets/products_list_rating_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
@@ -32,7 +33,11 @@ class ProductListWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.to(
+                    ProductsDetailListView(productListDetails: allProductList),
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(

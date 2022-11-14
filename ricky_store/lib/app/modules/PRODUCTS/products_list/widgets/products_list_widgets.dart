@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_list_model.dart';
-import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
-import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/recommended_product_ratings_widget.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_list/widgets/products_list_rating_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../../../../shared/config/config.dart';
 
+// ignore: must_be_immutable
 class ProductListWidget extends StatelessWidget {
   ProductList allProductList;
 

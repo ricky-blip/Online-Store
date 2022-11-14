@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_recommended_view.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../../../../shared/config/config.dart';
@@ -32,9 +33,14 @@ class RecommendedProductsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.to(
+                    ProductsDetailRecommendedView(
+                        productRecommendedDetails: recommendedW),
+                  );
+                },
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Image.network(

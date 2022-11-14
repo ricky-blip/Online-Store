@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/products/product_new_model.dart';
-import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/new_product_ratings_widget.dart';
+import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
+import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/recommended_product_ratings_widget.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -10,9 +10,10 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import '../controllers/products_detail_controller.dart';
 
 // ignore: must_be_immutable
-class ProductsDetailNewView extends GetView<ProductsDetailController> {
-  ProductsDetailNewView({super.key, required this.productNewDetails});
-  final ProductNew productNewDetails;
+class ProductsDetailRecommendedView extends GetView<ProductsDetailController> {
+  ProductsDetailRecommendedView(
+      {super.key, required this.productRecommendedDetails});
+  final ProductRecommended productRecommendedDetails;
 
   final pdetailsC = Get.lazyPut(() => ProductsDetailController());
 
@@ -31,7 +32,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
             children: [
               //NOTE Stack 1
               Image.network(
-                productNewDetails.gambar,
+                productRecommendedDetails.gambar,
                 width: MediaQuery.of(context).size.width,
                 height: 350,
                 fit: BoxFit.cover,
@@ -85,7 +86,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${productNewDetails.merk.merkProduct} ${productNewDetails.namaProduct}",
+                                    "${productRecommendedDetails.merk.merkProduct} ${productRecommendedDetails.namaProduct}",
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -97,8 +98,8 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
                                   //NOTE STAR
                                   Row(
                                     children: [
-                                      RatingsWidgetNew(
-                                        starRatings: productNewDetails,
+                                      RatingsWidgetRecommended(
+                                        starRatings: productRecommendedDetails,
                                       ),
                                     ],
                                   ),
@@ -158,7 +159,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
                                 ),
                               ),
                               const SizedBox(height: 12),
-                              HtmlWidget(productNewDetails.spesifikasi),
+                              HtmlWidget(productRecommendedDetails.spesifikasi),
                               const SizedBox(height: 30),
                               const Text(
                                 "Spesifikasi",
@@ -169,7 +170,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
                                 ),
                               ),
                               const SizedBox(height: 12),
-                              HtmlWidget(productNewDetails.spesifikasi),
+                              HtmlWidget(productRecommendedDetails.spesifikasi),
                             ],
                           ),
                         ],
@@ -204,7 +205,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
                       ),
                     ),
                     Text(
-                      Config.convertToIdr(productNewDetails.harga, 0),
+                      Config.convertToIdr(productRecommendedDetails.harga, 0),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,

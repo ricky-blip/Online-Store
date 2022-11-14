@@ -67,11 +67,11 @@ class AppPages {
       page: () => ProductsListView(),
       binding: ProductsListBinding(),
     ),
-    GetPage(
-      name: _Paths.PRODUCTS_DETAIL,
-      page: () => ProductsDetailView(productNewDetails: newProduct),
-      binding: ProductsDetailBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.PRODUCTS_DETAIL,
+    //   page: () => ProductsDetailView(productNewDetails: newProduct),
+    //   binding: ProductsDetailBinding(),
+    // ),
     GetPage(
       name: _Paths.PRODUCTS_SEARCH,
       page: () =>

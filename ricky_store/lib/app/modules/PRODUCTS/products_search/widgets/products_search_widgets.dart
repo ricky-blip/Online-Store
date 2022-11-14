@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/products/product_list_model.dart';
-import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
 import 'package:ricky_store/app/data/models/products/product_search_model.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_search_view.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/widgets/products_search_rating_widget.dart';
-import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/recommended_product_ratings_widget.dart';
-import 'package:ricky_store/app/modules/PRODUCTS/products_list/widgets/products_list_rating_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
-
 import '../../../../shared/config/config.dart';
 
+// ignore: must_be_immutable
 class ProductSearchWidget extends StatelessWidget {
   ProductSearch allSearchList;
 
@@ -35,7 +32,13 @@ class ProductSearchWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.to(
+                    ProductsDetailSearchView(
+                      productSearchDetails: allSearchList,
+                    ),
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(

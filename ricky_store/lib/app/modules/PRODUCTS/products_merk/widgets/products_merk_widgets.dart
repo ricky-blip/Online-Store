@@ -1,13 +1,10 @@
+// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/merk/merk_product_model.dart';
-import 'package:ricky_store/app/data/models/products/product_list_model.dart';
-import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
+import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_merk_view.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_merk/widgets/products_merk_rating_widget.dart';
-import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/recommended_product_ratings_widget.dart';
-import 'package:ricky_store/app/modules/PRODUCTS/products_list/widgets/products_list_rating_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
-
 import '../../../../shared/config/config.dart';
 
 class ProductMerkWidget extends StatelessWidget {
@@ -35,7 +32,11 @@ class ProductMerkWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
               ),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.to(
+                    ProductsDetailMerkView(productMerkDetails: allProductMerk),
+                  );
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Column(

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_new_view.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
-import 'package:ricky_store/app/data/models/products/product_new_model.dart';
+import 'package:ricky_store/app/data/models/product/product_new_model.dart';
 
 import 'new_product_ratings_widget.dart';
 

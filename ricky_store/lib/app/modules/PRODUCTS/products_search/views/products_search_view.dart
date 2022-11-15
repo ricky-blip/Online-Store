@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/products/product_search_model.dart';
+import 'package:ricky_store/app/data/models/product/product_search_model.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/widgets/products_search_widgets.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 

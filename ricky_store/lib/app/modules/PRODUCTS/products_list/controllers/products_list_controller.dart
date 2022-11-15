@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/products/product_list_model.dart';
+import 'package:ricky_store/app/data/models/product/product_list_model.dart';
 import 'package:http/http.dart' as myhttp;
 import 'package:ricky_store/app/shared/config/config.dart';
 

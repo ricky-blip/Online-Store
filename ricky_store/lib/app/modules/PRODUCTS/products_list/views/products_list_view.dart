@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/products/product_list_model.dart';
+import 'package:ricky_store/app/data/models/product/product_list_model.dart';
 import 'package:ricky_store/app/data/models/merk/merk_list_model.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_merk/controllers/products_merk_controller.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_merk/views/products_merk_view.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:ricky_store/app/data/models/products/product_list_model.dart';
-import 'package:ricky_store/app/data/models/products/product_new_model.dart';
-import 'package:ricky_store/app/data/models/products/product_recommended_model.dart';
-import 'package:ricky_store/app/data/models/products/product_search_model.dart';
+import 'package:ricky_store/app/data/models/product/product_list_model.dart';
+import 'package:ricky_store/app/data/models/product/product_new_model.dart';
+import 'package:ricky_store/app/data/models/product/product_recommended_model.dart';
+import 'package:ricky_store/app/data/models/product/product_search_model.dart';
 import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 

@@ -14,6 +14,7 @@ abstract class Routes {
   static const PRODUCTS_MERK = _Paths.PRODUCTS_MERK;
   static const REGISTER = _Paths.REGISTER;
   static const LOGIN = _Paths.LOGIN;
+  static const CART = _Paths.CART;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const PRODUCTS_MERK = '/products-merk';
   static const REGISTER = '/register';
   static const LOGIN = '/login';
+  static const CART = '/cart';
 }

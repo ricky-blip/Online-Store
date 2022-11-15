@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
-import 'package:ricky_store/app/modules/order/views/order_view.dart';
-
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -23,7 +21,7 @@ class HomeView extends GetView<HomeController> {
         color: appScaffoldBlue,
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.shopping_bag_rounded, title: 'Orders'),
+          TabItem(icon: Icons.shopping_cart_rounded, title: 'Cart'),
           TabItem(icon: Icons.person, title: 'Profile'),
         ],
         initialActiveIndex: controller.currentTab.value,

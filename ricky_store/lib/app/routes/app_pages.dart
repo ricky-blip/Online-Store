@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/Authentication/login/bindings/login_binding.dart';
+import '../modules/Authentication/login/views/login_view.dart';
 import '../modules/Authentication/profile/bindings/profile_binding.dart';
 import '../modules/Authentication/profile/views/profile_view.dart';
 import '../modules/Authentication/register/bindings/register_binding.dart';
@@ -19,8 +21,8 @@ import '../modules/STARTED/landing_page/views/landing_page_view.dart';
 import '../modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
-import '../modules/Authentication/login/bindings/login_binding.dart';
-import '../modules/Authentication/login/views/login_view.dart';
+import '../modules/cart/bindings/cart_binding.dart';
+import '../modules/cart/views/cart_view.dart';
 import '../modules/order/bindings/order_binding.dart';
 import '../modules/order/views/order_view.dart';
 
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.CART,
+      page: () => const CartView(),
+      binding: CartBinding(),
     ),
   ];
 }

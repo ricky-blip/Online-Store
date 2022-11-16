@@ -13,7 +13,7 @@ class OrderView extends GetView<OrderController> {
         title: const Text('OrderView'),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'OrderView is working',
           style: TextStyle(fontSize: 20),

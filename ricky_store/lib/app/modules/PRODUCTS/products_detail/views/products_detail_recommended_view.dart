@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/product/product_recommended_model.dart';
+import 'package:ricky_store/app/modules/ORDER/order/controllers/order_controller.dart';
 import 'package:ricky_store/app/modules/STARTED/landing_page/widgets/recommended_product_ratings_widget.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
@@ -15,7 +16,8 @@ class ProductsDetailRecommendedView extends GetView<ProductsDetailController> {
       {super.key, required this.productRecommendedDetails});
   final ProductRecommended productRecommendedDetails;
 
-  final pdetailsC = Get.lazyPut(() => ProductsDetailController());
+  final pdetailsC = Get.put(ProductsDetailController());
+  final orderC = Get.put(OrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -223,13 +225,10 @@ class ProductsDetailRecommendedView extends GetView<ProductsDetailController> {
                         ),
                       ),
                       onPressed: () {
-                        // _orderNowC.postKeranjang(widget.product.id, quantity);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => OrderNow(),
-                        //   ),
-                        // );
+                        orderC.postOrderNow(
+                          productRecommendedDetails.id,
+                          pdetailsC.quantity.value,
+                        );
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,

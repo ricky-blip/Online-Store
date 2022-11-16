@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/product/product_search_model.dart';
-import 'package:ricky_store/app/modules/PRODUCTS/products_merk/widgets/products_merk_rating_widget.dart';
+import 'package:ricky_store/app/modules/ORDER/order/controllers/order_controller.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_search/widgets/products_search_rating_widget.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
@@ -13,7 +13,8 @@ class ProductsDetailSearchView extends GetView<ProductsDetailController> {
   ProductsDetailSearchView({super.key, required this.productSearchDetails});
   final ProductSearch productSearchDetails;
 
-  final pdetailsC = Get.lazyPut(() => ProductsDetailController());
+  final pdetailsC = Get.put(ProductsDetailController());
+  final orderC = Get.put(OrderController());
 
   @override
   Widget build(BuildContext context) {
@@ -221,13 +222,10 @@ class ProductsDetailSearchView extends GetView<ProductsDetailController> {
                         ),
                       ),
                       onPressed: () {
-                        // _orderNowC.postKeranjang(widget.product.id, quantity);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => OrderNow(),
-                        //   ),
-                        // );
+                        orderC.postOrderNow(
+                          productSearchDetails.id,
+                          pdetailsC.quantity.value,
+                        );
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,

@@ -23,8 +23,16 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
       appBar: AppBar(
-        // backgroundColor: appScaffoldBlue,
-        title: const Text("Detail Product"),
+        iconTheme: const IconThemeData(
+          color: appBlack,
+        ),
+        backgroundColor: appScaffoldBlue,
+        title: const Text(
+          "Detail Product",
+          style: TextStyle(
+            color: appBlack,
+          ),
+        ),
       ),
       body: SafeArea(
         child: Padding(

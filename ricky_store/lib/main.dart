@@ -20,7 +20,7 @@ void main() async {
         textTheme: const TextTheme(
           headline5: TextStyle(
             color: appBlack,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
           ),
           headline6: TextStyle(
             color: appBlack,

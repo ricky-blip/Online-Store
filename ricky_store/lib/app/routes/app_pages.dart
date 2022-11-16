@@ -21,10 +21,10 @@ import '../modules/STARTED/landing_page/views/landing_page_view.dart';
 import '../modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
-import '../modules/cart/bindings/cart_binding.dart';
-import '../modules/cart/views/cart_view.dart';
-import '../modules/order/bindings/order_binding.dart';
-import '../modules/order/views/order_view.dart';
+import '../modules/CART/cart/bindings/cart_binding.dart';
+import '../modules/CART/cart/views/cart_view.dart';
+import '../modules/ORDER/order/bindings/order_binding.dart';
+import '../modules/ORDER/order/views/order_view.dart';
 
 part 'app_routes.dart';
 

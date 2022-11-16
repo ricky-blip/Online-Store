@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/cart_controller.dart';
 
@@ -9,13 +10,19 @@ class CartView extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: appScaffoldBlue,
       appBar: AppBar(
-        title: const Text('CartView'),
+        elevation: 0,
+        backgroundColor: appScaffoldBlue,
+        title: Text(
+          'Cart',
+          style: Get.textTheme.headline5,
+        ),
         centerTitle: true,
       ),
-      body: Center(
+      body: const Center(
         child: Text(
-          'CartView is working',
+          'Cart',
           style: TextStyle(fontSize: 20),
         ),
       ),

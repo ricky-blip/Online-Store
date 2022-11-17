@@ -9,6 +9,21 @@ import 'package:sp_util/sp_util.dart';
 import 'package:http/http.dart' as myhttp;
 
 class OrderController extends GetxController {
+  //list Payment
+  final List<String> paymentMethod = [
+    'MANDIRI',
+    'BCA',
+    'BNI',
+  ];
+  String? selectedPayment;
+
+  //list Delivery
+  final List<String> delivery = [
+    'TRANSFER BANK',
+    'COD',
+  ];
+  String? chooseDelivery;
+
   //SECTION Input Order Now with endPoint 'keranjang-post'
   Future postOrderNow(int productId, int jumlahOrder) async {
     //Field EndPoint

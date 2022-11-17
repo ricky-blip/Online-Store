@@ -181,6 +181,13 @@ class LandingPageView extends GetView<LandingPageController> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed(Routes.ORDER);
+        },
+        backgroundColor: Colors.green,
+        child: const Icon(Icons.navigation),
+      ),
     );
   }
 }

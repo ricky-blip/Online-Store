@@ -24,8 +24,8 @@ class MerkChipWidget extends StatelessWidget {
           style: const TextStyle(color: appBlue),
         ),
         avatar: CircleAvatar(
-          child: iconChip,
           backgroundColor: appWhite,
+          child: iconChip,
         ),
         labelPadding: const EdgeInsets.all(3.0),
         elevation: 5.0,

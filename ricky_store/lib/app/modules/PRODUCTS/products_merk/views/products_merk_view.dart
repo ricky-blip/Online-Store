@@ -14,9 +14,18 @@ class ProductsMerkView extends GetView<ProductsMerkController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: appScaffoldBlue,
       appBar: AppBar(
-        title: const Text('ProductsMerkView'),
-        centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: appBlack,
+        ),
+        backgroundColor: appScaffoldBlue,
+        title: const Text(
+          "Detail Product",
+          style: TextStyle(
+            color: appBlack,
+          ),
+        ),
       ),
       body: SafeArea(
         child: ListView(

@@ -16,21 +16,21 @@ class CartView extends GetView<CartController> {
         appBar: AppBar(
           centerTitle: false,
           elevation: 1,
-          toolbarHeight: 100,
+          toolbarHeight: MediaQuery.of(context).size.height * 0.08,
           backgroundColor: appSoftBlue,
-          iconTheme: IconThemeData(color: appBlack),
+          iconTheme: const IconThemeData(
+            color: appWhite,
+            size: 30,
+          ),
           leading: const Icon(Icons.shopping_cart),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text(
-                "Your Order",
+                "Your Cart",
               ),
             ],
           ),
-          // flexibleSpace: ,
-          //Note Tab Bar
-
           bottom: const TabBar(
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorColor: appScaffoldBlue,

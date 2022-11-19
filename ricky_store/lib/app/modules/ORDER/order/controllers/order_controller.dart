@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
@@ -9,20 +8,29 @@ import 'package:sp_util/sp_util.dart';
 import 'package:http/http.dart' as myhttp;
 
 class OrderController extends GetxController {
+  //SECTION LIST DROPDOWN
   //list Payment
   final List<String> paymentMethod = [
-    'MANDIRI',
-    'BCA',
-    'BNI',
+    'TRANSFER BANK',
+    'CASH ON DELIVERY',
   ];
-  String? selectedPayment;
-
+  RxString selectedPayment = 'TRANSFER BANK'.obs;
   //list Delivery
   final List<String> delivery = [
-    'TRANSFER BANK',
-    'COD',
+    'SICEPAT',
+    'JNE',
+    'JNT',
   ];
-  String? chooseDelivery;
+  RxString selectedDelivery = 'SICEPAT'.obs;
+  //list City
+  final List<String> city = [
+    'PALEMBANG',
+    'LAMPUNG',
+    'JAKARTA',
+    'YOGYAKARTA',
+    'SURABAYA',
+  ];
+  RxString selectedCity = 'PALEMBANG'.obs;
 
   //SECTION Input Order Now with endPoint 'keranjang-post'
   Future postOrderNow(int productId, int jumlahOrder) async {

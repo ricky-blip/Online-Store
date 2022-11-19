@@ -96,4 +96,32 @@ class OrderController extends GetxController {
       );
     }
   }
+
+  //Field accommodate get data
+  int jmlBarang = 0, grandTotal = 0;
+  String namaProduct = "", merkProduct = "", gambarProduct = "";
+  //SECTION GET data Input from Order Now with endPoint 'keranjang-list'
+  Future<void> getDataInputOrderNow() async {
+    //field URL endPoint
+    var myURL = Uri.parse(
+      "${Config.urlApi}keranjang-list?user_id${SpUtil.getInt("id_user")}",
+    );
+
+    //field get API endPoint
+    final myResponse = await myhttp.get(myURL);
+
+    //field convert to JSON
+    var myResponseDecode = json.decode(myResponse.body);
+
+    //declare data from API
+    jmlBarang = myResponseDecode["jumlahBarang"];
+    grandTotal = myResponseDecode["grandtotal"];
+    namaProduct = myResponseDecode["data"][0]["nama_product"];
+    merkProduct = myResponseDecode["data"][0]["merk_product"];
+    gambarProduct =
+        // ignore: prefer_interpolation_to_compose_strings
+        "${Config.urlMain}storage/" + myResponseDecode["data"][0]["gambar"];
+
+    update();
+  }
 }

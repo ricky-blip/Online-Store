@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 import '../controllers/order_controller.dart';
 
@@ -26,138 +27,145 @@ class OrderView extends GetView<OrderController> {
       body: ListView(
         children: [
           const SizedBox(height: 15),
-          //SECTION ITEM ORDERED
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-            child: Container(
-              decoration: const BoxDecoration(
-                color: appWhite,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: appSoftBlue,
-                    blurRadius: 5.0,
-                    spreadRadius: 1.0,
-                    offset: Offset(0.0, 0.0),
-                  )
-                ],
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //text Item Ordered
-                    const Text(
-                      "Item Ordered",
-                      style: TextStyle(
-                        color: appBlack,
-                        fontSize: 14,
-                      ),
+          //SECTION 1: ITEM ORDERED
+          FutureBuilder(
+            future: controller.getDataInputOrderNow(),
+            builder: (context, snapshot) {
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: appWhite,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
                     ),
-                    const SizedBox(height: 10),
-                    Row(
+                    boxShadow: [
+                      BoxShadow(
+                        color: appSoftBlue,
+                        blurRadius: 5.0,
+                        spreadRadius: 1.0,
+                        offset: Offset(0.0, 0.0),
+                      )
+                    ],
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        //image
-                        Column(
+                        //text Item Ordered
+                        const Text(
+                          "Item Ordered",
+                          style: TextStyle(
+                            color: appBlack,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Text("IMAGE"),
-                              // child: Image.network(
-                              //   // controller.,
-                              //   width: 70,
-                              //   height: 70,
-                              //   fit: BoxFit.cover,
-                              // ),
+                            //image
+                            Column(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Text("data"),
+                                  // Image.network(
+                                  //   controller.gambarProduct,
+                                  //   width: 10,
+                                  //   height: 10,
+                                  //   // fit: BoxFit.cover,
+                                  // ),
+                                ),
+                              ],
+                            ),
+                            // const SizedBox(width: 10),
+                            // Spacer(),
+                            //product name, total price,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "NAME:${controller.merkProduct} ${controller.namaProduct}",
+                                      // style: blackTextStyle.copyWith(
+                                      //   fontSize: 14,
+                                      //   fontFamily: "Poppins",
+                                      // ),
+                                    )
+                                  ],
+                                ),
+                                const SizedBox(height: 5),
+                                Row(
+                                  children: [
+                                    Text(
+                                      // "TOTAL PRICE",
+                                      Config.convertToIdr(
+                                        controller.grandTotal,
+                                        0,
+                                      ),
+                                      // style: greyTextStyle.copyWith(
+                                      //   fontSize: 12,
+                                      //   fontFamily: "Poppins",
+                                      // ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 5),
+                                Row(
+                                  children: [
+                                    Text(
+                                      // "TOTAL ITEMS ORDER",
+                                      Config.convertToIdr(
+                                        controller.grandTotal,
+                                        0,
+                                      ),
+                                      // ),
+                                      // style: greyTextStyle.copyWith(
+                                      //   fontSize: 12,
+                                      //   fontFamily: "Poppins",
+                                      // ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        // const SizedBox(width: 10),
-                        Spacer(),
-                        //product name, total price,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "PRODUCT NAME",
-                                  // "${_orderNowC.merkProduct} ${_orderNowC.namaProduct}",
-                                  // style: blackTextStyle.copyWith(
-                                  //   fontSize: 14,
-                                  //   fontFamily: "Poppins",
-                                  // ),
-                                )
-                              ],
+                        //DESCRIPTION
+                        const SizedBox(height: 23),
+                        Text(
+                          "Descriptions",
+                          // style: blackTextStyle.copyWith(
+                          //   fontSize: 14,
+                          //   fontFamily: "Poppins",
+                          // ),
+                        ),
+                        SizedBox(height: 10),
+                        TextFormField(
+                          // controller: _orderNowC.catatan,
+                          style: TextStyle(),
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
                             ),
-                            const SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Text(
-                                  "TOTAL PRICE",
-                                  // Config.convertToIdr(
-                                  //   _orderNowC.grandTotal,
-                                  //   0,
-                                  // ),
-                                  // style: greyTextStyle.copyWith(
-                                  //   fontSize: 12,
-                                  //   fontFamily: "Poppins",
-                                  // ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 5),
-                            Row(
-                              children: [
-                                Text(
-                                  "TOTAL ITEMS ORDER",
-                                  // Config.convertToIdr(
-                                  //   _orderNowC.grandTotal,
-                                  //   0,
-                                  // ),
-                                  // style: greyTextStyle.copyWith(
-                                  //   fontSize: 12,
-                                  //   fontFamily: "Poppins",
-                                  // ),
-                                ),
-                              ],
-                            ),
-                          ],
+                            hintText: "Notes...",
+                          ),
                         ),
                       ],
                     ),
-                    //DESCRIPTION
-                    const SizedBox(height: 23),
-                    Text(
-                      "Descriptions",
-                      // style: blackTextStyle.copyWith(
-                      //   fontSize: 14,
-                      //   fontFamily: "Poppins",
-                      // ),
-                    ),
-                    SizedBox(height: 10),
-                    TextFormField(
-                      // controller: _orderNowC.catatan,
-                      style: TextStyle(),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        hintText: "Notes...",
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
-          //SECTION PAYMENT & DELIVERY(Dropdown)
+
+          //SECTION 2: PAYMENT & DELIVERY(Dropdown)
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(
@@ -207,7 +215,7 @@ class OrderView extends GetView<OrderController> {
               ],
             ),
           ),
-          //SECTION Delivered To
+          //SECTION 3: Delivered To
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
             child: Container(
@@ -340,7 +348,7 @@ class OrderView extends GetView<OrderController> {
           SizedBox(height: 20),
         ],
       ),
-      //SECTION BOTTOM NAVBAR
+      //SECTION 4: BOTTOM NAVBAR
       bottomNavigationBar: BottomAppBar(
         color: appScaffoldBlue,
         child: Padding(

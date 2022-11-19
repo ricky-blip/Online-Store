@@ -49,7 +49,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
               //NOTE Stack 2
               ListView(
                 children: [
-                  const SizedBox(height: 263),
+                  const SizedBox(height: 380),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(

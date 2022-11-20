@@ -14,6 +14,7 @@ class LoginController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
+  //isLoading for confirm when validate
   RxBool isLoading = false.obs;
   RxBool obscure = true.obs;
 
@@ -30,7 +31,7 @@ class LoginController extends GetxController {
     try {
       //SECTION 1: Listing data from EndPoint
       //Loading
-      isLoading.value = true;
+      isLoading(true);
       //POST endPoint
       final myResponse = await myhttp.post(
         myUrl,
@@ -65,7 +66,7 @@ class LoginController extends GetxController {
         Get.offAllNamed(Routes.HOME);
       } else {
         //NOTE Loading
-        isLoading.value = false;
+        isLoading(false);
         //notification with snackbar if error Client
         Get.snackbar(
           "Error",

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ricky_store/app/modules/Authentication/login/controllers/login_controller.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/cart_controller.dart';
 
 class CartView extends GetView<CartController> {
-  CartView({Key? key}) : super(key: key);
+  const CartView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +39,19 @@ class CartView extends GetView<CartController> {
             tabs: [
               Tab(
                 child: Text(
-                  "New",
+                  "Payment",
                   // style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ),
               Tab(
                 child: Text(
-                  "Process",
+                  "In Progress",
                   // style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ),
               Tab(
                 child: Text(
-                  "Done",
+                  "Past Order",
                   // style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ),
@@ -85,7 +84,7 @@ class CartView extends GetView<CartController> {
                   // itemCount: _orderC.orderNewList.length,
                   itemCount: 10,
                   itemBuilder: (BuildContext context, int index) {
-                    return Text("PROCESS");
+                    return Text("IN PROGRESS");
                   },
                 ),
               ],

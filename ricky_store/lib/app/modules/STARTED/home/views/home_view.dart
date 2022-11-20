@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:ricky_store/app/modules/Authentication/login/controllers/login_controller.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
-
+  HomeView({Key? key}) : super(key: key);
+  final loginC = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

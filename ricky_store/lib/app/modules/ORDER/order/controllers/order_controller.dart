@@ -98,13 +98,14 @@ class OrderController extends GetxController {
   }
 
   //Field accommodate get data
-  int jmlBarang = 0, grandTotal = 0;
+  int jmlBarang = 0, grandTotal = 0, jmlhOrderBarang = 0;
   String namaProduct = "", merkProduct = "", gambarProduct = "";
+
   //SECTION GET data Input from Order Now with endPoint 'keranjang-list'
   Future<void> getDataInputOrderNow() async {
     //field URL endPoint
     var myURL = Uri.parse(
-      "${Config.urlApi}keranjang-list?user_id${SpUtil.getInt("id_user")}",
+      "${Config.urlApi}keranjang-list?user_id=${SpUtil.getInt("id_user")}",
     );
 
     //field get API endPoint
@@ -118,10 +119,93 @@ class OrderController extends GetxController {
     grandTotal = myResponseDecode["grandtotal"];
     namaProduct = myResponseDecode["data"][0]["nama_product"];
     merkProduct = myResponseDecode["data"][0]["merk_product"];
+    jmlhOrderBarang = myResponseDecode["data"][0]["jumlah"];
+    // totalHargaBarang = myResponseDecode["data"]["totalharga"];
     gambarProduct =
         // ignore: prefer_interpolation_to_compose_strings
         "${Config.urlMain}storage/" + myResponseDecode["data"][0]["gambar"];
 
     update();
+  }
+
+  // textediting controller form Input
+  TextEditingController notes = TextEditingController();
+
+  TextEditingController name = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController address = TextEditingController();
+
+  //SECTION after input Order Now post data to /checkout-post(endpoint)
+  Future postCheckout(
+    String payMethod,
+    String deliveryOption,
+    String city,
+  ) async {
+    //endPoint
+    var myURL = Uri.parse("${Config.urlApi}checkout-post");
+
+    try {
+      //Checking isLogin?
+      if (SpUtil.getString("name_user").toString() == "") {
+        Get.snackbar(
+          "Warning",
+          "You need Login",
+          margin: const EdgeInsets.all(10),
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.orange,
+          colorText: appWhite,
+        );
+        // Direct to Sign In
+        Get.toNamed(Routes.LOGIN);
+      } else {
+        //after Login/already Login, need http POST
+        final myResponse = await myhttp.post(
+          myURL,
+          body: {
+            'user_id': SpUtil.getInt("id_user").toString(),
+            'nama': name.text,
+            'nohp': phone.text,
+            'alamat': address.text,
+            'kota_kecamatan': city,
+            'catatan': notes.text,
+            'jenis_pembayaran': payMethod,
+            'jenis_pengiriman': deliveryOption,
+          },
+        );
+        //convert from data http to JSON (DECODE)
+        var myResponseDecode = json.decode(myResponse.body);
+        //notification if connection OK/Error
+        if (myResponse.statusCode == 200) {
+          Get.snackbar(
+            "Success",
+            myResponseDecode["message"],
+            margin: const EdgeInsets.all(10),
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: appGreen,
+            colorText: appWhite,
+          );
+          //if success goto HOME
+          Get.toNamed(Routes.HOME);
+        } else {
+          Get.snackbar(
+            "Error",
+            myResponseDecode["message"],
+            margin: const EdgeInsets.all(10),
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: Colors.red,
+            colorText: appWhite,
+          );
+        }
+      }
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        e.toString(),
+        margin: const EdgeInsets.all(10),
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: appRed,
+        colorText: appWhite,
+      );
+    }
   }
 }

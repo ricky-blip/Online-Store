@@ -6,6 +6,10 @@ import '../modules/Authentication/profile/bindings/profile_binding.dart';
 import '../modules/Authentication/profile/views/profile_view.dart';
 import '../modules/Authentication/register/bindings/register_binding.dart';
 import '../modules/Authentication/register/views/register_view.dart';
+import '../modules/CART/cart/bindings/cart_binding.dart';
+import '../modules/CART/cart/views/cart_view.dart';
+import '../modules/ORDER/order/bindings/order_binding.dart';
+import '../modules/ORDER/order/views/order_view.dart';
 import '../modules/PRODUCTS/products_detail/bindings/products_detail_binding.dart';
 import '../modules/PRODUCTS/products_detail/views/products_detail_new_view.dart';
 import '../modules/PRODUCTS/products_list/bindings/products_list_binding.dart';
@@ -21,10 +25,8 @@ import '../modules/STARTED/landing_page/views/landing_page_view.dart';
 import '../modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
-import '../modules/CART/cart/bindings/cart_binding.dart';
-import '../modules/CART/cart/views/cart_view.dart';
-import '../modules/ORDER/order/bindings/order_binding.dart';
-import '../modules/ORDER/order/views/order_view.dart';
+import '../modules/ORDER/checkout/bindings/checkout_binding.dart';
+import '../modules/ORDER/checkout/views/checkout_view.dart';
 
 part 'app_routes.dart';
 
@@ -49,7 +51,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => HomeView(),
       binding: HomeBinding(),
       transition: Transition.size,
       transitionDuration: const Duration(milliseconds: 700),
@@ -97,8 +99,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CART,
-      page: () => const CartView(),
+      page: () => CartView(),
       binding: CartBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHECKOUT,
+      page: () => const CheckoutView(),
+      binding: CheckoutBinding(),
     ),
   ];
 }

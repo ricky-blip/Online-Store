@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ricky_store/app/modules/Authentication/login/controllers/login_controller.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/cart_controller.dart';
 
 class CartView extends GetView<CartController> {
-  const CartView({Key? key}) : super(key: key);
+  CartView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -63,18 +65,14 @@ class CartView extends GetView<CartController> {
             //NOTE New
             ListView(
               children: [
-                ListView(
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      // itemCount: _orderC.orderNewList.length,
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Text("NEW");
-                      },
-                    ),
-                  ],
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  // itemCount: _orderC.orderNewList.length,
+                  itemCount: 10,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Text("NEW");
+                  },
                 ),
               ],
             ),

@@ -6,8 +6,7 @@ import 'package:ricky_store/app/shared/constant/color.dart';
 import '../controllers/order_controller.dart';
 
 class OrderView extends GetView<OrderController> {
-  const OrderView({Key? key}) : super(key: key);
-
+  OrderView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,26 +70,26 @@ class OrderView extends GetView<OrderController> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
-                                  child: Text("data"),
-                                  // Image.network(
-                                  //   controller.gambarProduct,
-                                  //   width: 10,
-                                  //   height: 10,
-                                  //   // fit: BoxFit.cover,
-                                  // ),
+                                  child: Image.network(
+                                    controller.gambarProduct,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.40,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.15,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ],
                             ),
                             // const SizedBox(width: 10),
-                            // Spacer(),
-                            //product name, total price,
+                            const Spacer(),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
                                     Text(
-                                      "NAME:${controller.merkProduct} ${controller.namaProduct}",
+                                      "${controller.merkProduct} ${controller.namaProduct}",
                                       // style: blackTextStyle.copyWith(
                                       //   fontSize: 14,
                                       //   fontFamily: "Poppins",
@@ -119,10 +118,7 @@ class OrderView extends GetView<OrderController> {
                                   children: [
                                     Text(
                                       // "TOTAL ITEMS ORDER",
-                                      Config.convertToIdr(
-                                        controller.grandTotal,
-                                        0,
-                                      ),
+                                      "${controller.jmlhOrderBarang} Items",
                                       // ),
                                       // style: greyTextStyle.copyWith(
                                       //   fontSize: 12,
@@ -137,18 +133,18 @@ class OrderView extends GetView<OrderController> {
                         ),
                         //DESCRIPTION
                         const SizedBox(height: 23),
-                        Text(
+                        const Text(
                           "Descriptions",
                           // style: blackTextStyle.copyWith(
                           //   fontSize: 14,
                           //   fontFamily: "Poppins",
                           // ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         TextFormField(
-                          // controller: _orderNowC.catatan,
-                          style: TextStyle(),
-                          decoration: InputDecoration(
+                          controller: controller.notes,
+                          style: const TextStyle(),
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
@@ -257,7 +253,7 @@ class OrderView extends GetView<OrderController> {
                     ),
                     const SizedBox(height: 5),
                     TextFormField(
-                      // controller: _orderNowC.catatan,
+                      controller: controller.name,
                       style: const TextStyle(),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -280,7 +276,7 @@ class OrderView extends GetView<OrderController> {
                     ),
                     const SizedBox(height: 5),
                     TextFormField(
-                      // controller: _orderNowC.catatan,
+                      controller: controller.phone,
                       style: const TextStyle(),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -303,7 +299,7 @@ class OrderView extends GetView<OrderController> {
                     ),
                     const SizedBox(height: 5),
                     TextFormField(
-                      // controller: _orderNowC.catatan,
+                      controller: controller.address,
                       minLines: 6,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
@@ -345,7 +341,7 @@ class OrderView extends GetView<OrderController> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
       //SECTION 4: BOTTOM NAVBAR
@@ -370,8 +366,10 @@ class OrderView extends GetView<OrderController> {
                       ),
                     ),
                     Text(
-                      "HARGA",
-                      // Config.convertToIdr(productNewDetails.harga, 0),
+                      Config.convertToIdr(
+                        controller.grandTotal,
+                        0,
+                      ),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18,
@@ -389,10 +387,11 @@ class OrderView extends GetView<OrderController> {
                         ),
                       ),
                       onPressed: () {
-                        // orderC.postOrderNow(
-                        //   productNewDetails.id,
-                        //   pdetailsC.quantity.value,
-                        // );
+                        controller.postCheckout(
+                          controller.selectedPayment.value,
+                          controller.selectedDelivery.value,
+                          controller.selectedCity.value,
+                        );
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,

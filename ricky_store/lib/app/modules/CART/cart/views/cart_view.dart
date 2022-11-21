@@ -11,10 +11,11 @@ class CartView extends GetView<CartController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: appScaffoldBlue,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: false,
           elevation: 1,
           toolbarHeight: MediaQuery.of(context).size.height * 0.08,
@@ -23,12 +24,13 @@ class CartView extends GetView<CartController> {
             color: appWhite,
             size: 30,
           ),
-          leading: const Icon(Icons.shopping_cart),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: const [
+              Icon(Icons.shopping_bag_sharp),
+              SizedBox(width: 10),
               Text(
-                "Your Cart",
+                "Your Orders",
               ),
             ],
           ),
@@ -37,6 +39,12 @@ class CartView extends GetView<CartController> {
             indicatorColor: appScaffoldBlue,
             indicatorWeight: 4,
             tabs: [
+              Tab(
+                child: Text(
+                  "Cart",
+                  // style: blackTextStyle.copyWith(fontSize: 14),
+                ),
+              ),
               Tab(
                 child: Text(
                   "Payment",
@@ -61,7 +69,21 @@ class CartView extends GetView<CartController> {
         //NOTE Body
         body: TabBarView(
           children: [
-            //NOTE New
+            //NOTE Cart(List Cart)
+            ListView(
+              children: [
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  // itemCount: _orderC.orderNewList.length,
+                  itemCount: 10,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Text("CART");
+                  },
+                ),
+              ],
+            ),
+            //NOTE Payment(NEW)
             ListView(
               children: [
                 ListView.builder(
@@ -75,7 +97,7 @@ class CartView extends GetView<CartController> {
                 ),
               ],
             ),
-            //NOTE Process
+            //NOTE In Progress(Process)
             ListView(
               children: [
                 ListView.builder(
@@ -89,7 +111,7 @@ class CartView extends GetView<CartController> {
                 ),
               ],
             ),
-            //NOTE Done
+            //NOTE Past Order(Done)
             ListView(
               children: [
                 ListView.builder(

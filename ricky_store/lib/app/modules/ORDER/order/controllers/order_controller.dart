@@ -73,7 +73,7 @@ class OrderController extends GetxController {
             colorText: appWhite,
           );
           //Go to Next Page
-          Get.toNamed(Routes.ORDER);
+          Get.offAllNamed(Routes.HOME);
         } else {
           Get.snackbar(
             "Error",
@@ -185,7 +185,7 @@ class OrderController extends GetxController {
             colorText: appWhite,
           );
           //if success goto HOME
-          Get.toNamed(Routes.HOME);
+          Get.offAllNamed(Routes.HOME);
         } else {
           Get.snackbar(
             "Error",

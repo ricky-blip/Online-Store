@@ -242,7 +242,7 @@ class ProductsDetailNewView extends GetView<ProductsDetailController> {
                         height: 45,
                         child: const Center(
                           child: Text(
-                            "Order Now",
+                            "Add Cart",
                             style: TextStyle(
                               fontSize: 20,
                               color: appWhite,

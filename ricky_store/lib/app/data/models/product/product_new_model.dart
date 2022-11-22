@@ -42,8 +42,12 @@ class ProductNew {
         rating: json["rating"] ?? 0.0,
         status: json["status"] ?? "",
         rekomendasi: json["rekomendasi"] ?? "",
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+        createdAt: DateTime.parse(
+          json["created_at"] ?? DateTime.now().toIso8601String(),
+        ),
+        updatedAt: DateTime.parse(
+          json["updated_at"] ?? DateTime.now().toIso8601String(),
+        ),
         merk: Merk.fromJson(json["merk"]),
       );
 

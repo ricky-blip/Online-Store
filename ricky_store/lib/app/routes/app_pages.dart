@@ -8,6 +8,8 @@ import '../modules/Authentication/register/bindings/register_binding.dart';
 import '../modules/Authentication/register/views/register_view.dart';
 import '../modules/CART/cart/bindings/cart_binding.dart';
 import '../modules/CART/cart/views/cart_view.dart';
+import '../modules/ORDER/checkout/bindings/checkout_binding.dart';
+import '../modules/ORDER/checkout/views/checkout_view.dart';
 import '../modules/ORDER/order/bindings/order_binding.dart';
 import '../modules/ORDER/order/views/order_view.dart';
 import '../modules/PRODUCTS/products_detail/bindings/products_detail_binding.dart';
@@ -25,8 +27,8 @@ import '../modules/STARTED/landing_page/views/landing_page_view.dart';
 import '../modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
-import '../modules/ORDER/checkout/bindings/checkout_binding.dart';
-import '../modules/ORDER/checkout/views/checkout_view.dart';
+import '../modules/PURCHASE/purchase/bindings/purchase_binding.dart';
+import '../modules/PURCHASE/purchase/views/purchase_view.dart';
 
 part 'app_routes.dart';
 
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.CHECKOUT,
       page: () => const CheckoutView(),
       binding: CheckoutBinding(),
+    ),
+    GetPage(
+      name: _Paths.PURCHASE,
+      page: () => const PurchaseView(),
+      binding: PurchaseBinding(),
     ),
   ];
 }

@@ -23,6 +23,7 @@ class HomeView extends GetView<HomeController> {
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.shopping_cart_rounded, title: 'Cart'),
+          TabItem(icon: Icons.payment_rounded, title: 'Purchase'),
           TabItem(icon: Icons.person, title: 'Profile'),
         ],
         initialActiveIndex: controller.currentTab.value,

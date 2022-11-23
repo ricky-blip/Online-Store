@@ -15,7 +15,7 @@ class CartView extends GetView<CartController> {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
       appBar: AppBar(
-        title: Text("CART"),
+        title: const Text("CART"),
       ),
       body: ListView(
         children: [
@@ -25,14 +25,17 @@ class CartView extends GetView<CartController> {
                 future: controller.getCartList(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("Waiting . . .");
+                    return const Text("Waiting Data. . .");
                   } else if (snapshot.hasData) {
-                    return Row(
-                      children: [
-                        ...snapshot.data!.map(
-                          (e) => CartListWidget(listCart: e),
-                        ),
-                      ],
+                    return Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        children: [
+                          ...snapshot.data!.map(
+                            (e) => CartListWidget(listCart: e),
+                          ),
+                        ],
+                      ),
                     );
                   }
                   return Text("Data Cart");

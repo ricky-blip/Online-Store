@@ -105,7 +105,7 @@ class OrderController extends GetxController {
   Future<void> getDataInputOrderNow() async {
     //field URL endPoint
     var myURL = Uri.parse(
-      "${Config.urlApi}keranjang-list?user_id=${SpUtil.getInt("id_user")}",
+      "${Config.urlApi}keranjang-list?user_id=${SpUtil.getInt("id_user").toString()}",
     );
 
     //field get API endPoint
@@ -122,8 +122,8 @@ class OrderController extends GetxController {
     jmlhOrderBarang = myResponseDecode["data"][0]["jumlah"];
     // totalHargaBarang = myResponseDecode["data"]["totalharga"];
     gambarProduct =
-        // ignore: prefer_interpolation_to_compose_strings
-        "${Config.urlMain}storage/" + myResponseDecode["data"][0]["gambar"];
+        "${Config.urlMain}Storage/" + myResponseDecode["data"][0]["gambar"];
+    // gambarProduct = myResponseDecode["data"][0]["gambar"];
 
     update();
   }

@@ -20,58 +20,55 @@ class CartListWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              onTap: () {
-                // Get.to(ProductsDetailNewView(productNewDetails: newProduct));
-              },
-              child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Ink.image(
-                    image: NetworkImage(
-                      "${Config.urlMain}storage/${listCart.gambar}",
-                    ),
-                    height: 100,
-                    width: 200,
-                    fit: BoxFit.fitHeight,
+          child: InkWell(
+            onTap: () {
+              // Get.to(ProductsDetailNewView(productNewDetails: newProduct));
+            },
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Ink.image(
+                  image: NetworkImage(
+                    "${Config.urlMain}storage/${listCart.gambar}",
                   ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 5,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          listCart.merkProduct,
-                          style: Get.textTheme.subtitle1,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          listCart.namaProduct,
-                          style: Get.textTheme.subtitle1,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          "${listCart.jumlah} Items",
-                          style: Get.textTheme.subtitle1,
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          Config.convertToIdr(listCart.totalharga, 0),
-                          style: Get.textTheme.subtitle1,
-                        ),
-                      ],
-                    ),
+                  height: 100,
+                  width: 150,
+                  fit: BoxFit.fitHeight,
+                ),
+                const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 5,
                   ),
-                ],
-              ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        listCart.merkProduct,
+                        style: Get.textTheme.subtitle1,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        listCart.namaProduct,
+                        style: Get.textTheme.subtitle1,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "${listCart.jumlah} Items",
+                        style: Get.textTheme.subtitle1,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        Config.convertToIdr(listCart.totalharga, 0),
+                        style: Get.textTheme.subtitle1,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ),

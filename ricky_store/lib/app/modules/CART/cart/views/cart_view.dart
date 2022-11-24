@@ -15,7 +15,14 @@ class CartView extends GetView<CartController> {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
       appBar: AppBar(
-        title: const Text("CART"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.shopping_cart),
+            SizedBox(width: 10),
+            Text("Your Cart"),
+          ],
+        ),
       ),
       body: ListView(
         children: [
@@ -38,7 +45,7 @@ class CartView extends GetView<CartController> {
                       ),
                     );
                   }
-                  return Text("Data Cart");
+                  return const Text("Data Cart");
                 },
               ),
             ],

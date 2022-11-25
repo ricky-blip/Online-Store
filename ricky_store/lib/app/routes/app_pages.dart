@@ -58,11 +58,11 @@ class AppPages {
       transition: Transition.size,
       transitionDuration: const Duration(milliseconds: 700),
     ),
-    GetPage(
-      name: _Paths.ORDER,
-      page: () => OrderView(),
-      binding: OrderBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.ORDER,
+    //   page: () => OrderView(),
+    //   binding: OrderBinding(),
+    // ),
     GetPage(
       name: _Paths.PROFILE,
       page: () => ProfileView(),

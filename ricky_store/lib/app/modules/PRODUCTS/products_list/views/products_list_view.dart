@@ -100,9 +100,9 @@ class ProductsListView extends GetView<ProductsListController> {
                           ),
                         );
                       } else if (snapshot.data!.isEmpty) {
-                        return Text("Data Kosong");
+                        return const Text("Data Kosong");
                       } else if (snapshot.hasError) {
-                        return Text("Koneksi Error");
+                        return const Text("Koneksi Error");
                       }
                       return const SizedBox();
                     },
@@ -130,7 +130,6 @@ class ProductsListView extends GetView<ProductsListController> {
                         },
                       );
                     }
-
                     return const Text("data");
                   },
                 ),

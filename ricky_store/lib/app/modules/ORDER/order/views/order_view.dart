@@ -1,12 +1,16 @@
 import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ricky_store/app/data/models/cart/cart_list_model.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 import '../controllers/order_controller.dart';
 
 class OrderView extends GetView<OrderController> {
-  OrderView({Key? key}) : super(key: key);
+  OrderView({super.key, required this.orderCart});
+  final CartModel orderCart;
+
+  final orderC = Get.lazyPut(() => OrderController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +68,7 @@ class OrderView extends GetView<OrderController> {
                         ),
                         const SizedBox(height: 10),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             //image
                             Column(
@@ -71,9 +76,9 @@ class OrderView extends GetView<OrderController> {
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
-                                    controller.gambarProduct,
+                                    "${Config.urlMain}storage/${orderCart.gambar}",
                                     width: MediaQuery.of(context).size.width *
-                                        0.40,
+                                        0.35,
                                     height: MediaQuery.of(context).size.height *
                                         0.15,
                                     fit: BoxFit.cover,
@@ -89,7 +94,7 @@ class OrderView extends GetView<OrderController> {
                                 Row(
                                   children: [
                                     Text(
-                                      "${controller.merkProduct} ${controller.namaProduct}",
+                                      "${orderCart.merkProduct} ${orderCart.namaProduct}",
                                       // style: blackTextStyle.copyWith(
                                       //   fontSize: 14,
                                       //   fontFamily: "Poppins",
@@ -103,7 +108,7 @@ class OrderView extends GetView<OrderController> {
                                     Text(
                                       // "TOTAL PRICE",
                                       Config.convertToIdr(
-                                        controller.grandTotal,
+                                        orderCart.hargaSatuan,
                                         0,
                                       ),
                                       // style: greyTextStyle.copyWith(
@@ -118,7 +123,7 @@ class OrderView extends GetView<OrderController> {
                                   children: [
                                     Text(
                                       // "TOTAL ITEMS ORDER",
-                                      "${controller.jmlhOrderBarang} Items",
+                                      "${orderCart.jumlah} Items",
                                       // ),
                                       // style: greyTextStyle.copyWith(
                                       //   fontSize: 12,
@@ -367,7 +372,7 @@ class OrderView extends GetView<OrderController> {
                     ),
                     Text(
                       Config.convertToIdr(
-                        controller.grandTotal,
+                        orderCart.totalharga,
                         0,
                       ),
                       style: const TextStyle(

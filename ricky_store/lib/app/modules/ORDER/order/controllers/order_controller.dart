@@ -98,7 +98,7 @@ class OrderController extends GetxController {
   }
 
   //Field accommodate get data
-  int jmlBarang = 0, grandTotal = 0, jmlhOrderBarang = 0;
+  int jmlBarang = 0, grandTotal = 0, jmlhOrderBarang = 0, totalHargaBarang = 0;
   String namaProduct = "", merkProduct = "", gambarProduct = "";
 
   //SECTION GET data Input from Order Now with endPoint 'keranjang-list'
@@ -120,17 +120,15 @@ class OrderController extends GetxController {
     namaProduct = myResponseDecode["data"][0]["nama_product"];
     merkProduct = myResponseDecode["data"][0]["merk_product"];
     jmlhOrderBarang = myResponseDecode["data"][0]["jumlah"];
-    // totalHargaBarang = myResponseDecode["data"]["totalharga"];
+    totalHargaBarang = myResponseDecode["data"][0]["totalharga"];
     gambarProduct =
-        "${Config.urlMain}Storage/" + myResponseDecode["data"][0]["gambar"];
-    // gambarProduct = myResponseDecode["data"][0]["gambar"];
+        "${Config.urlMain}storage/${myResponseDecode["data"][0]["gambar"]}";
 
     update();
   }
 
   // textediting controller form Input
   TextEditingController notes = TextEditingController();
-
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController address = TextEditingController();

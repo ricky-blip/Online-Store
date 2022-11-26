@@ -46,7 +46,6 @@ class CartModel {
           json["updated_at"] ?? DateTime.now().toIso8601String(),
         ),
         namaProduct: json["nama_product"] ?? "",
-        // gambar: json["gambar"] ?? "no image",
         gambar: json["gambar"] ??
             "${Config.urlMain}storage/product-images/5puVDfAAeLtiESGhHbFW5sjZoVW1ts27sp5fjg3K.webp",
         hargaSatuan: json["harga_satuan"] ?? 0,

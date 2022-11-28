@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/cart/cart_list_model.dart';
-import 'package:ricky_store/app/modules/ORDER/order/controllers/order_controller.dart';
 import 'package:ricky_store/app/modules/ORDER/order/views/order_view.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';

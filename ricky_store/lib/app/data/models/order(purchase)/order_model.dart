@@ -1,7 +1,7 @@
 import 'package:ricky_store/app/shared/config/config.dart';
 
-class OrderNewModel {
-  OrderNewModel({
+class OrderModel {
+  OrderModel({
     required this.id,
     required this.kodeTransaksi,
     required this.userId,
@@ -39,7 +39,7 @@ class OrderNewModel {
   DateTime updatedAt;
   Item item;
 
-  factory OrderNewModel.fromJson(Map<String, dynamic> json) => OrderNewModel(
+  factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
         id: json["id"] ?? 0,
         kodeTransaksi: json["kode_transaksi"] ?? "",
         userId: json["user_id"] ?? 0,

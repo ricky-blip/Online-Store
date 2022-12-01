@@ -49,7 +49,7 @@ class CartView extends GetView<CartController> {
                 },
               ),
             ],
-          )
+          ),
         ],
       ),
     );

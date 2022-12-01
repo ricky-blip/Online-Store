@@ -111,7 +111,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PURCHASE,
-      page: () => const PurchaseView(),
+      page: () => PurchaseView(),
       binding: PurchaseBinding(),
     ),
   ];

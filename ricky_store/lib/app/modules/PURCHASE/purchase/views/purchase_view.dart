@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ricky_store/app/data/models/order(purchase)/order_model.dart';
+import 'package:ricky_store/app/modules/PURCHASE/purchase/widgets/purchase_list_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/purchase_controller.dart';
 
 class PurchaseView extends GetView<PurchaseController> {
-  const PurchaseView({Key? key}) : super(key: key);
+  PurchaseView({Key? key}) : super(key: key);
+  final purchaseC = Get.lazyPut(() => PurchaseController());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -40,7 +43,7 @@ class PurchaseView extends GetView<PurchaseController> {
             tabs: [
               Tab(
                 child: Text(
-                  "Pay Now",
+                  "Checkout Now",
                   // style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ),
@@ -65,14 +68,30 @@ class PurchaseView extends GetView<PurchaseController> {
             //NOTE Payment(NEW)
             ListView(
               children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  // itemCount: _orderC.orderNewList.length,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Text("PAY NOW");
-                  },
+                Column(
+                  children: [
+                    FutureBuilder<List<OrderModel>>(
+                      future: controller.getOrderNew(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Text("Waiting Data. . .");
+                        } else if (snapshot.hasData) {
+                          return Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              children: [
+                                ...snapshot.data!.map(
+                                  (e) => PurchaseListWidget(listOrderNew: e),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+                        return const Text("Data Need Checkout");
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),

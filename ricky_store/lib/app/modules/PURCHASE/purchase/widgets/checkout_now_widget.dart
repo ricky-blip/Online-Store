@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/order(purchase)/order_model.dart';
+import 'package:ricky_store/app/modules/ORDER/checkout/views/checkout_view.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
-class PurchaseListWidget extends StatelessWidget {
-  const PurchaseListWidget({super.key, required this.listOrderNew});
+class CheckoutNowWidget extends StatelessWidget {
+  const CheckoutNowWidget({super.key, required this.listOrderNew});
   final OrderModel listOrderNew;
 
   @override
@@ -21,7 +22,9 @@ class PurchaseListWidget extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              // Get.to(ProductsDetailNewView(productNewDetails: newProduct));
+              Get.to(
+                CheckoutView(checkOut: listOrderNew),
+              );
             },
             child: Column(
               children: [

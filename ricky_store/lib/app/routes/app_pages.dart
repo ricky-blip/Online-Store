@@ -104,11 +104,11 @@ class AppPages {
       page: () => CartView(),
       binding: CartBinding(),
     ),
-    GetPage(
-      name: _Paths.CHECKOUT,
-      page: () => const CheckoutView(),
-      binding: CheckoutBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.CHECKOUT,
+    //   page: () => const CheckoutView(),
+    //   binding: CheckoutBinding(),
+    // ),
     GetPage(
       name: _Paths.PURCHASE,
       page: () => PurchaseView(),

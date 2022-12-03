@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/order(purchase)/order_model.dart';
-import 'package:ricky_store/app/modules/PURCHASE/purchase/widgets/purchase_list_widget.dart';
+import 'package:ricky_store/app/modules/PURCHASE/purchase/widgets/checkout_now_widget.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/purchase_controller.dart';
@@ -13,7 +13,7 @@ class PurchaseView extends GetView<PurchaseController> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         backgroundColor: appScaffoldBlue,
         appBar: AppBar(
@@ -43,13 +43,7 @@ class PurchaseView extends GetView<PurchaseController> {
             tabs: [
               Tab(
                 child: Text(
-                  "Checkout Now",
-                  // style: blackTextStyle.copyWith(fontSize: 14),
-                ),
-              ),
-              Tab(
-                child: Text(
-                  "In Progress",
+                  "Checkout",
                   // style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ),
@@ -82,7 +76,7 @@ class PurchaseView extends GetView<PurchaseController> {
                             child: Column(
                               children: [
                                 ...snapshot.data!.map(
-                                  (e) => PurchaseListWidget(listOrderNew: e),
+                                  (e) => CheckoutNowWidget(listOrderNew: e),
                                 ),
                               ],
                             ),
@@ -92,20 +86,6 @@ class PurchaseView extends GetView<PurchaseController> {
                       },
                     ),
                   ],
-                ),
-              ],
-            ),
-            //NOTE In Progress(Process)
-            ListView(
-              children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  // itemCount: _orderC.orderNewList.length,
-                  itemCount: 10,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Text("IN PROGRESS");
-                  },
                 ),
               ],
             ),

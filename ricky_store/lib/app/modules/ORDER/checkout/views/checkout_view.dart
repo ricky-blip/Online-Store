@@ -318,7 +318,7 @@ class CheckoutView extends GetView<CheckoutController> {
                         ),
                       ),
                       onPressed: () {
-                        //Route
+                        //Route here!
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,

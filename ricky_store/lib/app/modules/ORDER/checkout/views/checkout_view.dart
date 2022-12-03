@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ricky_store/app/data/models/order(purchase)/order_model.dart';
+import 'package:ricky_store/app/modules/ORDER/payment/views/payment_view.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
@@ -319,6 +320,9 @@ class CheckoutView extends GetView<CheckoutController> {
                       ),
                       onPressed: () {
                         //Route here!
+                        Get.to(
+                          PaymentView(payOrder: checkOut),
+                        );
                       },
                       child: SizedBox(
                         width: MediaQuery.of(context).size.width * 0.4,

@@ -20,6 +20,8 @@ import '../modules/PRODUCTS/products_merk/bindings/products_merk_binding.dart';
 import '../modules/PRODUCTS/products_merk/views/products_merk_view.dart';
 import '../modules/PRODUCTS/products_search/bindings/products_search_binding.dart';
 import '../modules/PRODUCTS/products_search/views/products_search_view.dart';
+import '../modules/PURCHASE/purchase/bindings/purchase_binding.dart';
+import '../modules/PURCHASE/purchase/views/purchase_view.dart';
 import '../modules/STARTED/home/bindings/home_binding.dart';
 import '../modules/STARTED/home/views/home_view.dart';
 import '../modules/STARTED/landing_page/bindings/landing_page_binding.dart';
@@ -27,8 +29,8 @@ import '../modules/STARTED/landing_page/views/landing_page_view.dart';
 import '../modules/STARTED/landing_page/widgets/new_products_widget.dart';
 import '../modules/STARTED/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/STARTED/splash_screen/views/splash_screen_view.dart';
-import '../modules/PURCHASE/purchase/bindings/purchase_binding.dart';
-import '../modules/PURCHASE/purchase/views/purchase_view.dart';
+import '../modules/ORDER/payment/bindings/payment_binding.dart';
+import '../modules/ORDER/payment/views/payment_view.dart';
 
 part 'app_routes.dart';
 
@@ -114,5 +116,10 @@ class AppPages {
       page: () => PurchaseView(),
       binding: PurchaseBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.PAYMENT,
+    //   page: () => const PaymentView(),
+    //   binding: PaymentBinding(),
+    // ),
   ];
 }

@@ -35,9 +35,6 @@ import '../modules/ORDER/payment/views/payment_view.dart';
 part 'app_routes.dart';
 
 class AppPages {
-  //FIXME
-  static var newProduct;
-
   AppPages._();
 
   static const INITIAL = Routes.SPLASH_SCREEN;

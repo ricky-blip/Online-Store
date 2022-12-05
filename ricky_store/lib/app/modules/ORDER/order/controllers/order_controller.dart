@@ -10,30 +10,37 @@ import 'package:http/http.dart' as myhttp;
 class OrderController extends GetxController {
   //SECTION LIST DROPDOWN
   //list Payment
-  final List<String> paymentMethod = [
-    'TRANSFER BANK',
-    'CASH ON DELIVERY',
+  final List<String> payment = [
+    'GOPAY',
+    'OVO',
+    'ALFAMART',
+    'INDOMARET',
   ];
-  RxString selectedPayment = 'TRANSFER BANK'.obs;
+  RxString selectedPayment = 'ALFAMART'.obs;
+
   //list Delivery
   final List<String> delivery = [
     'SICEPAT',
     'JNE',
     'JNT',
   ];
-  RxString selectedDelivery = 'SICEPAT'.obs;
+  RxString selectedDelivery = 'JNE'.obs;
+
   //list City
   final List<String> city = [
-    'PALEMBANG',
+    'URUGUAY',
     'LAMPUNG',
     'JAKARTA',
     'YOGYAKARTA',
     'SURABAYA',
   ];
-  RxString selectedCity = 'PALEMBANG'.obs;
+  RxString selectedCity = 'URUGUAY'.obs;
 
   //SECTION Input Order Now with endPoint 'keranjang-post'
-  Future postOrderNow(int productId, int jumlahOrder) async {
+  Future postOrderNow(
+    int productId,
+    int jumlahOrder,
+  ) async {
     //Field EndPoint
     var myEndPointUrl = Uri.parse('${Config.urlApi}keranjang-post');
 
@@ -135,8 +142,8 @@ class OrderController extends GetxController {
 
   //SECTION after input Order Now post data to /checkout-post(endpoint)
   Future postCheckout(
-    String payMethod,
-    String deliveryOption,
+    String pay,
+    String deliver,
     String city,
   ) async {
     //endPoint
@@ -160,14 +167,14 @@ class OrderController extends GetxController {
         final myResponse = await myhttp.post(
           myURL,
           body: {
-            'user_id': SpUtil.getInt("id_user").toString(),
             'nama': name.text,
+            'user_id': SpUtil.getInt("id_user").toString(),
             'nohp': phone.text,
             'alamat': address.text,
             'kota_kecamatan': city,
             'catatan': notes.text,
-            'jenis_pembayaran': payMethod,
-            'jenis_pengiriman': deliveryOption,
+            'jenis_pembayaran': pay,
+            'jenis_pengiriman': deliver,
           },
         );
         //convert from data http to JSON (DECODE)

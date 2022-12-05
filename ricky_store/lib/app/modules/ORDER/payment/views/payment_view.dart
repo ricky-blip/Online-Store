@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ricky_store/app/data/models/order(purchase)/order_model.dart';
+import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
 
 import '../controllers/payment_controller.dart';
@@ -12,7 +14,7 @@ class PaymentView extends GetView<PaymentController> {
   PaymentView({super.key, required this.payOrder});
   final OrderModel payOrder;
 
-  final controller = Get.put(PaymentController());
+  final controllerP = Get.put(PaymentController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class PaymentView extends GetView<PaymentController> {
                   children: const [
                     Icon(Icons.camera_alt),
                     Text(
-                      'Kamera',
+                      'Camera',
                       style: TextStyle(
                         color: Colors.grey,
                       ),
@@ -44,7 +46,7 @@ class PaymentView extends GetView<PaymentController> {
                 ),
                 onPressed: () {
                   Navigator.pop(context);
-                  // orderController.getImage(ImageSource.camera);
+                  controllerP.getImage(ImageSource.camera);
                 },
               ),
               SimpleDialogOption(
@@ -52,7 +54,7 @@ class PaymentView extends GetView<PaymentController> {
                   children: const [
                     Icon(Icons.image),
                     Text(
-                      'Galeri ',
+                      'Gallery',
                       style: TextStyle(
                         color: Colors.grey,
                       ),
@@ -61,20 +63,20 @@ class PaymentView extends GetView<PaymentController> {
                 ),
                 onPressed: () {
                   Get.back();
-                  // orderController.getImage(ImageSource.gallery);
+                  controllerP.getImage(ImageSource.gallery);
                 },
               ),
               SimpleDialogOption(
                 child: Container(
                   alignment: Alignment.bottomRight,
                   child: const Text(
-                    'Batal',
+                    'Cancel',
                     style: TextStyle(
                       color: Colors.red,
                     ),
                   ),
                 ),
-                onPressed: () => Navigator.pop(context),
+                onPressed: () => Get.back(),
               ),
             ],
           );
@@ -104,40 +106,22 @@ class PaymentView extends GetView<PaymentController> {
                       children: [
                         Column(
                           children: [
-                            // Image.asset(
-                            //   'assets/mandiri_icon.png',
-                            //   width: 100,
-                            // ),
                             Icon(
                               Icons.credit_card,
                               size: 100,
                             ),
                             Text(
                               'Mandiri Virtual Account',
-                              // style: blackTextStyle.copyWith(
-                              //   fontSize: 12,
-                              //   fontWeight: FontWeight.normal,
-                              // ),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
                             Text(
                               '90089181873817',
-                              // style: blackTextStyle.copyWith(
-                              //   fontSize: 18,
-                              //   fontWeight: FontWeight.bold,
-                              // ),
                             ),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 10),
                             Text(
                               'a.n Syntop Laptopindo',
-                              // style: blackTextStyle.copyWith(
-                              //   fontSize: 13,
-                              //   fontWeight: FontWeight.bold,
-                              // ),
                             ),
                             const SizedBox(height: 10),
                             Container(
@@ -165,7 +149,7 @@ class PaymentView extends GetView<PaymentController> {
                                     Column(
                                       children: [
                                         Obx(
-                                          () => controller.selectedImagePath
+                                          () => controllerP.selectedImagePath
                                                       .value ==
                                                   ''
                                               ? Icon(
@@ -175,7 +159,7 @@ class PaymentView extends GetView<PaymentController> {
                                                 )
                                               : Image.file(
                                                   File(
-                                                    controller.selectedImagePath
+                                                    controllerP.selectedImagePath
                                                         .value,
                                                   ),
                                                   fit: BoxFit.contain,
@@ -217,12 +201,7 @@ class PaymentView extends GetView<PaymentController> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Item Ordered',
-                              // style: blackTextStyle.copyWith(
-                              //   fontSize: 14,
-                              // ),
-                            ),
+                            const Text('Item Ordered'),
                             const SizedBox(
                               height: 10,
                             ),
@@ -248,28 +227,26 @@ class PaymentView extends GetView<PaymentController> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Lenovo Thinkpad T570s',
-                                      // style: blackTextStyle.copyWith(
-                                      //     fontWeight: FontWeight.w500,
-                                      //     fontSize: 15),
+                                      "${payOrder.item.merkProduct} ${payOrder.item.namaProduct}",
                                     ),
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: MediaQuery.of(context).size.width *
                                           0.70,
                                       child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'IDR 12.289.000',
-                                            // style: greyTextStyle.copyWith(
-                                            //     fontSize: 12),
+                                            Config.convertToIdr(
+                                              payOrder.item.totalharga,
+                                              0,
+                                            ),
                                           ),
                                           Text(
-                                            '1 Items',
-                                            // style: blackTextStyle.copyWith(
-                                            //     fontSize: 14),
+                                            "${payOrder.item.jumlah} Items",
                                           ),
                                         ],
                                       ),
@@ -285,7 +262,7 @@ class PaymentView extends GetView<PaymentController> {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 5),
-                              child: Container(
+                              child: SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.90,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,11 +270,8 @@ class PaymentView extends GetView<PaymentController> {
                                     const SizedBox(
                                       height: 20,
                                     ),
-                                    Text(
+                                    const Text(
                                       'Details Transaction',
-                                      // style: blackTextStyle.copyWith(
-                                      //   fontSize: 14,
-                                      // ),
                                     ),
                                     const SizedBox(
                                       height: 8,
@@ -305,12 +279,14 @@ class PaymentView extends GetView<PaymentController> {
                                     Row(
                                       children: [
                                         Text(
-                                          'Lenovo Thinkpad T570s',
-                                          // style: greyTextStyle,
+                                          "${payOrder.item.merkProduct} ${payOrder.item.namaProduct}",
                                         ),
                                         const Spacer(),
                                         Text(
-                                          'IDR 12.289.000',
+                                          Config.convertToIdr(
+                                            payOrder.item.totalharga,
+                                            0,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -320,11 +296,14 @@ class PaymentView extends GetView<PaymentController> {
                                     Row(
                                       children: [
                                         Text(
-                                          'Kurir Instant',
+                                          payOrder.jenisPengiriman,
                                         ),
                                         const Spacer(),
                                         Text(
-                                          'IDR 50.000',
+                                          Config.convertToIdr(
+                                            payOrder.ongkir,
+                                            0,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -338,7 +317,11 @@ class PaymentView extends GetView<PaymentController> {
                                         ),
                                         const Spacer(),
                                         Text(
-                                          'IDR 12.339.000',
+                                          Config.convertToIdr(
+                                            payOrder.item.totalharga +
+                                                payOrder.ongkir,
+                                            0,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -348,11 +331,16 @@ class PaymentView extends GetView<PaymentController> {
                                     Row(
                                       children: [
                                         Text(
-                                          'Transfer Bank',
+                                          " Kirim : |" +
+                                              payOrder.jenisPengiriman,
                                         ),
-                                        const Spacer(),
+                                        // const Spacer(),
                                         Text(
-                                          'Mandiri VA',
+                                          " Bayar : |" +
+                                              payOrder.jenisPembayaran,
+                                        ),
+                                        Text(
+                                          " Kota : |" + payOrder.kotaKecamatan,
                                         ),
                                       ],
                                     ),

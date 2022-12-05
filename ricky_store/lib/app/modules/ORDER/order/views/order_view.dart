@@ -11,6 +11,7 @@ class OrderView extends GetView<OrderController> {
   final CartModel orderCart;
 
   final orderC = Get.lazyPut(() => OrderController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,10 +141,6 @@ class OrderView extends GetView<OrderController> {
                         const SizedBox(height: 23),
                         const Text(
                           "Descriptions",
-                          // style: blackTextStyle.copyWith(
-                          //   fontSize: 14,
-                          //   fontFamily: "Poppins",
-                          // ),
                         ),
                         const SizedBox(height: 10),
                         TextFormField(
@@ -167,55 +164,56 @@ class OrderView extends GetView<OrderController> {
           ),
 
           //SECTION 2: PAYMENT & DELIVERY(Dropdown)
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Payment Method"),
-                    const SizedBox(height: 10),
-                    Obx(
-                      () => CustomDropdownButton2(
-                        buttonWidth: MediaQuery.of(context).size.width * 0.45,
-                        dropdownWidth: MediaQuery.of(context).size.width * 0.45,
-                        hint: 'Select',
-                        value: controller.selectedPayment.value,
-                        dropdownItems: controller.paymentMethod,
-                        onChanged: (value) {
-                          controller.selectedPayment.value = value!;
-                          // ignore: avoid_print
-                          print(value);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Delivery Option"),
-                    const SizedBox(height: 10),
-                    Obx(
-                      () => CustomDropdownButton2(
-                        buttonWidth: MediaQuery.of(context).size.width * 0.41,
-                        hint: 'Select',
-                        value: controller.selectedDelivery.value,
-                        dropdownItems: controller.delivery,
-                        onChanged: (value) {
-                          controller.selectedDelivery.value = value!;
-                          // ignore: avoid_print
-                          print(value);
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(20.0),
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           const Text("Payment Option"),
+          //           const SizedBox(height: 10),
+          //           //NOTE Pay
+          //           Obx(
+          //             () => CustomDropdownButton2(
+          //               buttonWidth: MediaQuery.of(context).size.width * 0.41,
+          //               hint: 'Select',
+          //               value: controller.selectedPayment.value,
+          //               dropdownItems: controller.payment,
+          //               onChanged: (value) {
+          //                 controller.selectedPayment.value = value!;
+          //                 // ignore: avoid_print
+          //                 print(value);
+          //               },
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //       Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           const Text("Delivery Option"),
+          //           const SizedBox(height: 10),
+          //           Obx(
+          //             () => CustomDropdownButton2(
+          //               buttonWidth: MediaQuery.of(context).size.width * 0.41,
+          //               hint: 'Select',
+          //               value: controller.selectedDelivery.value,
+          //               dropdownItems: controller.delivery,
+          //               onChanged: (value) {
+          //                 controller.selectedDelivery.value = value!;
+          //                 // ignore: avoid_print
+          //                 print(value);
+          //               },
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
+
           //SECTION 3: Delivered To
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
@@ -329,6 +327,7 @@ class OrderView extends GetView<OrderController> {
                       ),
                     ),
                     const SizedBox(height: 5),
+                    //NOTE Select City
                     Obx(
                       () => CustomDropdownButton2(
                         hint: 'Select',
@@ -336,6 +335,32 @@ class OrderView extends GetView<OrderController> {
                         dropdownItems: controller.city,
                         onChanged: (value) {
                           controller.selectedCity.value = value!;
+                          // ignore: avoid_print
+                          print(value);
+                        },
+                      ),
+                    ),
+                    //NOTE Select Payment
+                    Obx(
+                      () => CustomDropdownButton2(
+                        hint: 'Select',
+                        value: controller.selectedPayment.value,
+                        dropdownItems: controller.payment,
+                        onChanged: (value) {
+                          controller.selectedPayment.value = value!;
+                          // ignore: avoid_print
+                          print(value);
+                        },
+                      ),
+                    ),
+                    //NOTE Select Delivery
+                    Obx(
+                      () => CustomDropdownButton2(
+                        hint: 'Select',
+                        value: controller.selectedDelivery.value,
+                        dropdownItems: controller.delivery,
+                        onChanged: (value) {
+                          controller.selectedDelivery.value = value!;
                           // ignore: avoid_print
                           print(value);
                         },
@@ -392,6 +417,7 @@ class OrderView extends GetView<OrderController> {
                         ),
                       ),
                       onPressed: () {
+                        //send to checkOut
                         controller.postCheckout(
                           controller.selectedPayment.value,
                           controller.selectedDelivery.value,

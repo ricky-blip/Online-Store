@@ -266,6 +266,17 @@ class CheckoutView extends GetView<CheckoutController> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Text(
+                              'Pay',
+                            ),
+                            const Spacer(),
+                            Text(
+                              checkOut.jenisPembayaran,
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ],

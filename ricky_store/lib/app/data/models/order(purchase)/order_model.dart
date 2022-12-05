@@ -14,7 +14,7 @@ class OrderModel {
     required this.jenisPengiriman,
     required this.ongkir,
     required this.grandTotal,
-    required this.buktibayar,
+    required this.buktiBayar,
     required this.status,
     required this.createdAt,
     required this.updatedAt,
@@ -33,7 +33,7 @@ class OrderModel {
   String jenisPengiriman;
   int ongkir;
   int grandTotal;
-  dynamic buktibayar;
+  String buktiBayar;
   String status;
   DateTime createdAt;
   DateTime updatedAt;
@@ -52,14 +52,12 @@ class OrderModel {
         jenisPengiriman: json["jenis_pengiriman"] ?? "",
         ongkir: json["ongkir"] ?? 0,
         grandTotal: json["grand_total"] ?? 0,
-        buktibayar: json["buktibayar"] ?? "",
+        buktiBayar: json["buktibayar"] ?? "",
         status: json["status"] ?? "",
         createdAt: DateTime.parse(
-          json["created_at"] ?? DateTime.now().toIso8601String(),
-        ),
+            json["created_at"] ?? DateTime.now().toIso8601String()),
         updatedAt: DateTime.parse(
-          json["updated_at"] ?? DateTime.now().toIso8601String(),
-        ),
+            json["updated_at"] ?? DateTime.now().toIso8601String()),
         item: Item.fromJson(json["item"]),
       );
 
@@ -76,11 +74,9 @@ class OrderModel {
         "jenis_pengiriman": jenisPengiriman,
         "ongkir": ongkir,
         "grand_total": grandTotal,
-        "buktibayar": buktibayar,
         "status": status,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "item": item.toJson(),
       };
 }
 
@@ -116,23 +112,20 @@ class Item {
   String merkProduct;
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
-        id: json["id"] ?? 0,
-        userId: json["user_id"] ?? 0,
-        productId: json["product_id"] ?? 0,
-        checkoutId: json["checkout_id"] ?? 0,
-        jumlah: json["jumlah"] ?? 0,
-        totalharga: json["totalharga"] ?? 0,
-        status: json["status"] ?? "",
-        createdAt: DateTime.parse(
-          json["created_at"] ?? DateTime.now().toIso8601String(),
-        ),
-        updatedAt: DateTime.parse(
-          json["updated_at"] ?? DateTime.now().toIso8601String(),
-        ),
-        namaProduct: json["nama_product"] ?? "",
-        gambar: "${Config.urlMain}storage/${json["gambar"]}",
-        hargaSatuan: json["harga_satuan"] ?? 0,
-        merkProduct: json["merk_product"] ?? "",
+        id: json["id"],
+        userId: json["user_id"],
+        productId: json["product_id"],
+        checkoutId: json["checkout_id"],
+        jumlah: json["jumlah"],
+        totalharga: json["totalharga"],
+        status: json["status"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        namaProduct: json["nama_product"],
+        // ignore: prefer_interpolation_to_compose_strings
+        gambar: "${Config.urlMain}storage/" + json["gambar"],
+        hargaSatuan: json["harga_satuan"],
+        merkProduct: json["merk_product"],
       );
 
   Map<String, dynamic> toJson() => {

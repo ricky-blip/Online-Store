@@ -163,56 +163,56 @@ class OrderView extends GetView<OrderController> {
             },
           ),
 
-          //SECTION 2: PAYMENT & DELIVERY(Dropdown)
-          // Padding(
-          //   padding: const EdgeInsets.all(20.0),
-          //   child: Column(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: [
-          //           const Text("Payment Option"),
-          //           const SizedBox(height: 10),
-          //           //NOTE Pay
-          //           Obx(
-          //             () => CustomDropdownButton2(
-          //               buttonWidth: MediaQuery.of(context).size.width * 0.41,
-          //               hint: 'Select',
-          //               value: controller.selectedPayment.value,
-          //               dropdownItems: controller.payment,
-          //               onChanged: (value) {
-          //                 controller.selectedPayment.value = value!;
-          //                 // ignore: avoid_print
-          //                 print(value);
-          //               },
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //       Column(
-          //         crossAxisAlignment: CrossAxisAlignment.start,
-          //         children: [
-          //           const Text("Delivery Option"),
-          //           const SizedBox(height: 10),
-          //           Obx(
-          //             () => CustomDropdownButton2(
-          //               buttonWidth: MediaQuery.of(context).size.width * 0.41,
-          //               hint: 'Select',
-          //               value: controller.selectedDelivery.value,
-          //               dropdownItems: controller.delivery,
-          //               onChanged: (value) {
-          //                 controller.selectedDelivery.value = value!;
-          //                 // ignore: avoid_print
-          //                 print(value);
-          //               },
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     ],
-          //   ),
-          // ),
+          // SECTION 2: PAYMENT & DELIVERY(Dropdown)
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Payment Option"),
+                    const SizedBox(height: 10),
+                    //NOTE Pay
+                    Obx(
+                      () => CustomDropdownButton2(
+                        buttonWidth: MediaQuery.of(context).size.width * 0.41,
+                        hint: 'Select',
+                        value: controller.selectedPayment.value,
+                        dropdownItems: controller.payment,
+                        onChanged: (value) {
+                          controller.selectedPayment.value = value!;
+                          // ignore: avoid_print
+                          print(value);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Delivery Option"),
+                    const SizedBox(height: 10),
+                    Obx(
+                      () => CustomDropdownButton2(
+                        buttonWidth: MediaQuery.of(context).size.width * 0.41,
+                        hint: 'Select',
+                        value: controller.selectedDelivery.value,
+                        dropdownItems: controller.delivery,
+                        onChanged: (value) {
+                          controller.selectedDelivery.value = value!;
+                          // ignore: avoid_print
+                          print(value);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
 
           //SECTION 3: Delivered To
           Padding(
@@ -335,32 +335,6 @@ class OrderView extends GetView<OrderController> {
                         dropdownItems: controller.city,
                         onChanged: (value) {
                           controller.selectedCity.value = value!;
-                          // ignore: avoid_print
-                          print(value);
-                        },
-                      ),
-                    ),
-                    //NOTE Select Payment
-                    Obx(
-                      () => CustomDropdownButton2(
-                        hint: 'Select',
-                        value: controller.selectedPayment.value,
-                        dropdownItems: controller.payment,
-                        onChanged: (value) {
-                          controller.selectedPayment.value = value!;
-                          // ignore: avoid_print
-                          print(value);
-                        },
-                      ),
-                    ),
-                    //NOTE Select Delivery
-                    Obx(
-                      () => CustomDropdownButton2(
-                        hint: 'Select',
-                        value: controller.selectedDelivery.value,
-                        dropdownItems: controller.delivery,
-                        onChanged: (value) {
-                          controller.selectedDelivery.value = value!;
                           // ignore: avoid_print
                           print(value);
                         },

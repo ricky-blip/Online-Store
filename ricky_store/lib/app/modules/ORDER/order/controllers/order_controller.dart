@@ -11,30 +11,28 @@ class OrderController extends GetxController {
   //SECTION LIST DROPDOWN
   //list Payment
   final List<String> payment = [
+    'TF',
     'GOPAY',
-    'OVO',
-    'ALFAMART',
-    'INDOMARET',
   ];
-  RxString selectedPayment = 'ALFAMART'.obs;
+  RxString selectedPayment = 'TF'.obs;
 
   //list Delivery
   final List<String> delivery = [
     'SICEPAT',
     'JNE',
-    'JNT',
+    'J&T',
   ];
-  RxString selectedDelivery = 'JNE'.obs;
+  RxString selectedDelivery = 'SICEPAT'.obs;
 
   //list City
   final List<String> city = [
-    'URUGUAY',
+    'PALEMBANG',
     'LAMPUNG',
     'JAKARTA',
     'YOGYAKARTA',
     'SURABAYA',
   ];
-  RxString selectedCity = 'URUGUAY'.obs;
+  RxString selectedCity = 'PALEMBANG'.obs;
 
   //SECTION Input Order Now with endPoint 'keranjang-post'
   Future postOrderNow(
@@ -141,10 +139,11 @@ class OrderController extends GetxController {
   TextEditingController address = TextEditingController();
 
   //SECTION after input Order Now post data to /checkout-post(endpoint)
+
   Future postCheckout(
+    String city,
     String pay,
     String deliver,
-    String city,
   ) async {
     //endPoint
     var myURL = Uri.parse("${Config.urlApi}checkout-post");

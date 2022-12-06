@@ -177,7 +177,6 @@ class OrderView extends GetView<OrderController> {
                     //NOTE Pay
                     Obx(
                       () => CustomDropdownButton2(
-                        buttonWidth: MediaQuery.of(context).size.width * 0.41,
                         hint: 'Select',
                         value: controller.selectedPayment.value,
                         dropdownItems: controller.payment,
@@ -197,7 +196,6 @@ class OrderView extends GetView<OrderController> {
                     const SizedBox(height: 10),
                     Obx(
                       () => CustomDropdownButton2(
-                        buttonWidth: MediaQuery.of(context).size.width * 0.41,
                         hint: 'Select',
                         value: controller.selectedDelivery.value,
                         dropdownItems: controller.delivery,
@@ -393,9 +391,9 @@ class OrderView extends GetView<OrderController> {
                       onPressed: () {
                         //send to checkOut
                         controller.postCheckout(
+                          controller.selectedCity.value,
                           controller.selectedPayment.value,
                           controller.selectedDelivery.value,
-                          controller.selectedCity.value,
                         );
                       },
                       child: SizedBox(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ricky_store/app/data/models/product/product_list_model.dart';
 import 'package:ricky_store/app/data/models/product/product_new_model.dart';
 import 'package:ricky_store/app/data/models/product/product_recommended_model.dart';
@@ -38,7 +39,9 @@ class RatingsWidgetRecommended extends StatelessWidget {
         // const SizedBox(width: 10),
         Text(
           starRatings.rating.toString(),
-          style: Get.textTheme.subtitle2,
+          style: GoogleFonts.poppins(
+            fontSize: 14,
+          ),
         ),
       ],
     );

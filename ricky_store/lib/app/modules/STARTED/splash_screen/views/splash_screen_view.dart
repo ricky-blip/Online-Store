@@ -21,29 +21,27 @@ class SplashScreenView extends GetView<SplashScreenController> {
       },
     );
     // Get.offNamed(Routes.HOME);
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: appSoftBlue,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/store-image.png',
-                width: 200,
-                height: 200,
+    return Scaffold(
+      backgroundColor: appSoftBlue,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/store-image.png',
+              width: 200,
+              height: 200,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              "Ricky's Store",
+              style: GoogleFonts.poppins(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 10),
-              Text(
-                "Ricky's Store",
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

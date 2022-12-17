@@ -22,175 +22,186 @@ class LandingPageView extends GetView<LandingPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appScaffoldBlue,
-      body: SafeArea(
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                //SECTION TopBar
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 25,
-                    right: 25,
-                    top: 20,
-                    bottom: 30,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          Navigator.pushReplacement(
+            context,
+            //to refresh all page
+            MaterialPageRoute(
+              builder: (context) => LandingPageView(),
+            ),
+          );
+        },
+        child: SafeArea(
+          child: ListView(
+            children: [
+              Column(
+                children: [
+                  //SECTION TopBar
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 25,
+                      right: 25,
+                      top: 20,
+                      bottom: 30,
+                    ),
+                    child: Container(
+                      // color: Colors.amber,
+                      // height: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            //jika spUtil nya kosong "" tampilkan Welcome, selain itu(jika login) tampilkan nama user
+                            SpUtil.getString("name_user").toString() == ""
+                                ? "Welcome"
+                                : "Welcome Back, ${SpUtil.getString("name_user")}",
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const CircleAvatar(
+                            backgroundImage:
+                                NetworkImage("https://i.pravatar.cc/300"),
+                            minRadius: 10,
+                            maxRadius: 20,
+                          ),
+                          // GestureDetector(
+                          //   onTap: () {},
+                          //   child: const CircleAvatar(
+                          //     foregroundColor: appSoftBlue,
+                          //     // backgroundColor: Colors.grey,
+                          //     child: Icon(
+                          //       Icons.info,
+                          //       size: 40,
+                          //     ),
+                          //   ),
+                          // ),
+                        ],
+                      ),
+                    ),
                   ),
-                  child: Container(
-                    // color: Colors.amber,
-                    // height: 50,
+
+                  //SECTION New Products Text
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 0,
+                      left: 25,
+                      right: 25,
+                      bottom: 15,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "New Products",
+                          style: GoogleFonts.poppins(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Icon(
+                          Icons.fiber_new_sharp,
+                          color: appRed,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  //SECTION New Product
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 0,
+                        left: 15,
+                        right: 15,
+                        bottom: 0,
+                      ),
+                      child: FutureBuilder<List<ProductNew>>(
+                        future: controller.getProductNew("new"),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Text("Waiting . . .");
+                          } else if (snapshot.hasData) {
+                            return Row(
+                              children: [
+                                ...snapshot.data!.map(
+                                  (e) => NewProductsWidget(newProduct: e),
+                                ),
+                              ],
+                            );
+                          }
+
+                          return const Text("data");
+                        },
+                      ),
+                    ),
+                  ),
+
+                  //SECTION Products Recommended Text
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 38,
+                      left: 25,
+                      right: 25,
+                      bottom: 16,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          //jika spUtil nya kosong "" tampilkan Welcome, selain itu(jika login) tampilkan nama user
-                          SpUtil.getString("name_user").toString() == ""
-                              ? "Welcome"
-                              : "Welcome Back, ${SpUtil.getString("name_user")}",
+                          "Recommended",
                           style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const CircleAvatar(
-                          backgroundImage:
-                              NetworkImage("https://i.pravatar.cc/300"),
-                          minRadius: 10,
-                          maxRadius: 20,
+                        GestureDetector(
+                          onTap: () => Get.toNamed(Routes.PRODUCTS_LIST),
+                          child: Text(
+                            "See More",
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: appBlue,
+                            ),
+                          ),
                         ),
-                        // GestureDetector(
-                        //   onTap: () {},
-                        //   child: const CircleAvatar(
-                        //     foregroundColor: appSoftBlue,
-                        //     // backgroundColor: Colors.grey,
-                        //     child: Icon(
-                        //       Icons.info,
-                        //       size: 40,
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
-                ),
 
-                //SECTION New Products Text
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 0,
-                    left: 25,
-                    right: 25,
-                    bottom: 15,
+                  //SECTION Products Recommended
+                  FutureBuilder<List<ProductRecommended>>(
+                    future: controller.getProductRecommended("recommended"),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Text("Waiting Data . . .");
+                      } else if (snapshot.hasData) {
+                        return AlignedGridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisCount: 2,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            ProductRecommended products = snapshot.data![index];
+                            return RecommendedProductsWidget(
+                              recommendedW: products,
+                            );
+                          },
+                        );
+                      }
+
+                      return const Text("data");
+                    },
                   ),
-                  child: Row(
-                    children: [
-                      Text(
-                        "New Products",
-                        style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Icon(
-                        Icons.fiber_new_sharp,
-                        color: appRed,
-                      ),
-                    ],
-                  ),
-                ),
-
-                //SECTION New Product
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 0,
-                      left: 15,
-                      right: 15,
-                      bottom: 0,
-                    ),
-                    child: FutureBuilder<List<ProductNew>>(
-                      future: controller.getProductNew("new"),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text("Waiting . . .");
-                        } else if (snapshot.hasData) {
-                          return Row(
-                            children: [
-                              ...snapshot.data!.map(
-                                (e) => NewProductsWidget(newProduct: e),
-                              ),
-                            ],
-                          );
-                        }
-
-                        return const Text("data");
-                      },
-                    ),
-                  ),
-                ),
-
-                //SECTION Products Recommended Text
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 38,
-                    left: 25,
-                    right: 25,
-                    bottom: 16,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Recommended",
-                        style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => Get.toNamed(Routes.PRODUCTS_LIST),
-                        child: Text(
-                          "See More",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: appBlue,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                //SECTION Products Recommended
-                FutureBuilder<List<ProductRecommended>>(
-                  future: controller.getProductRecommended("recommended"),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Waiting Data . . .");
-                    } else if (snapshot.hasData) {
-                      return AlignedGridView.count(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          ProductRecommended products = snapshot.data![index];
-                          return RecommendedProductsWidget(
-                            recommendedW: products,
-                          );
-                        },
-                      );
-                    }
-
-                    return Text("data");
-                  },
-                ),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ],
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

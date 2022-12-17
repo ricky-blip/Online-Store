@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ricky_store/app/data/models/product/product_recommended_model.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_recommended_view.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
@@ -51,18 +52,27 @@ class RecommendedProductsWidget extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "${recommendedW.merk.merkProduct} ",
-                        style: Get.textTheme.subtitle1,
+                        recommendedW.merk.merkProduct,
+                        style: GoogleFonts.poppins(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                       Text(
                         recommendedW.namaProduct,
-                        style: Get.textTheme.subtitle1,
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 7),
                       Text(
                         Config.convertToIdr(recommendedW.harga, 0),
-                        style: Get.textTheme.subtitle2,
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       const SizedBox(height: 15),
                       Row(

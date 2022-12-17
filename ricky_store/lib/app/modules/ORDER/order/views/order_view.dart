@@ -166,7 +166,7 @@ class OrderView extends GetView<OrderController> {
           // SECTION 2: PAYMENT & DELIVERY(Dropdown)
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(

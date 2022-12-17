@@ -36,7 +36,8 @@ class RecommendedProductsWidget extends StatelessWidget {
                 onTap: () {
                   Get.to(
                     ProductsDetailRecommendedView(
-                        productRecommendedDetails: recommendedW),
+                      productRecommendedDetails: recommendedW,
+                    ),
                   );
                 },
                 child: Padding(

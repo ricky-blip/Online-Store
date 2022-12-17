@@ -6,6 +6,7 @@ environment:
   sdk: '>=2.18.2 <3.0.0'
 
 dependencies:
+  google_fonts: ^3.0.1
   image_picker: ^0.8.6
   dropdown_button2: ^1.8.9  
   flutter_widget_from_html: ^0.9.0
@@ -27,4 +28,13 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
+  assets:
+    - assets/images/store-image.png
+  
+  # fonts:
+  #   - family: Jebrains-Bold
+  #     fonts:
+  #       - asset: fonts/JetBrainsMono-ExtraBold.ttf
+  #   - family: Jebrains-Medium
+  #     fonts:
+  #       - asset: fonts/JetBrainsMono-Medium.ttf

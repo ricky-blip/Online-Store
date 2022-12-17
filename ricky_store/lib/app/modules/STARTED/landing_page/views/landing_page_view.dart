@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ricky_store/app/data/models/product/product_recommended_model.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:sp_util/sp_util.dart';
@@ -46,7 +46,10 @@ class LandingPageView extends GetView<LandingPageController> {
                           SpUtil.getString("name_user").toString() == ""
                               ? "Welcome"
                               : "Welcome Back, ${SpUtil.getString("name_user")}",
-                          style: Get.textTheme.headline6,
+                          style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         const CircleAvatar(
                           backgroundImage:
@@ -82,9 +85,12 @@ class LandingPageView extends GetView<LandingPageController> {
                     children: [
                       Text(
                         "New Products",
-                        style: Get.textTheme.headline6,
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.fiber_new_sharp,
                         color: appRed,
                       ),
@@ -107,7 +113,7 @@ class LandingPageView extends GetView<LandingPageController> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return Text("Waiting . . .");
+                          return const Text("Waiting . . .");
                         } else if (snapshot.hasData) {
                           return Row(
                             children: [
@@ -118,7 +124,7 @@ class LandingPageView extends GetView<LandingPageController> {
                           );
                         }
 
-                        return Text("data");
+                        return const Text("data");
                       },
                     ),
                   ),
@@ -137,13 +143,20 @@ class LandingPageView extends GetView<LandingPageController> {
                     children: [
                       Text(
                         "Recommended",
-                        style: Get.textTheme.headline6,
+                        style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       GestureDetector(
                         onTap: () => Get.toNamed(Routes.PRODUCTS_LIST),
                         child: Text(
                           "See More",
-                          style: Get.textTheme.subtitle1,
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: appBlue,
+                          ),
                         ),
                       ),
                     ],
@@ -155,7 +168,7 @@ class LandingPageView extends GetView<LandingPageController> {
                   future: controller.getProductRecommended("recommended"),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Text("Waiting Data . . .");
+                      return const Text("Waiting Data . . .");
                     } else if (snapshot.hasData) {
                       return AlignedGridView.count(
                         shrinkWrap: true,
@@ -163,7 +176,6 @@ class LandingPageView extends GetView<LandingPageController> {
                         crossAxisCount: 2,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          int sequence = index + 1;
                           ProductRecommended products = snapshot.data![index];
                           return RecommendedProductsWidget(
                             recommendedW: products,

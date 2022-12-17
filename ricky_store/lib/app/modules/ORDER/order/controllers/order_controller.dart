@@ -12,7 +12,7 @@ class OrderController extends GetxController {
   //list Payment
   final List<String> payment = [
     'TF',
-    'GOPAY',
+    'COD',
   ];
   RxString selectedPayment = 'TF'.obs;
 

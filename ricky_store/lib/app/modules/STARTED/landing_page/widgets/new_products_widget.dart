@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ricky_store/app/modules/PRODUCTS/products_detail/views/products_detail_new_view.dart';
 import 'package:ricky_store/app/shared/config/config.dart';
 import 'package:ricky_store/app/shared/constant/color.dart';
@@ -45,20 +46,29 @@ class NewProductsWidget extends StatelessWidget {
                     children: [
                       Text(
                         newProduct.namaProduct,
-                        style: Get.textTheme.subtitle1,
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                      SizedBox(height: 3),
+                      const SizedBox(height: 3),
                       Text(
-                        Config.convertToIdr(newProduct.harga, 0),
-                        style: Get.textTheme.subtitle2,
+                        Config.convertToIdr(
+                          newProduct.harga,
+                          0,
+                        ),
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                      SizedBox(height: 7),
+                      const SizedBox(height: 7),
                       Row(
                         children: [
                           RatingsWidgetNew(starRatings: newProduct),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ),

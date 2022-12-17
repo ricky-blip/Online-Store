@@ -16,7 +16,6 @@ void main() async {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: ThemeData(
-        backgroundColor: Colors.black,
         textTheme: const TextTheme(
           headline5: TextStyle(
             color: appBlack,
@@ -27,7 +26,7 @@ void main() async {
             fontWeight: FontWeight.bold,
           ),
           subtitle1: TextStyle(
-            color: appBlue,
+            color: appBlack,
             fontWeight: FontWeight.w500,
           ),
         ),

@@ -159,7 +159,8 @@ class PaymentView extends GetView<PaymentController> {
                                                 )
                                               : Image.file(
                                                   File(
-                                                    controllerP.selectedImagePath
+                                                    controllerP
+                                                        .selectedImagePath
                                                         .value,
                                                   ),
                                                   fit: BoxFit.contain,
@@ -312,9 +313,7 @@ class PaymentView extends GetView<PaymentController> {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
-                                          'Total Price',
-                                        ),
+                                        const Text('Total Price'),
                                         const Spacer(),
                                         Text(
                                           Config.convertToIdr(
@@ -328,22 +327,22 @@ class PaymentView extends GetView<PaymentController> {
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          " Kirim : |" +
-                                              payOrder.jenisPengiriman,
-                                        ),
-                                        // const Spacer(),
-                                        Text(
-                                          " Bayar : |" +
-                                              payOrder.jenisPembayaran,
-                                        ),
-                                        Text(
-                                          " Kota : |" + payOrder.kotaKecamatan,
-                                        ),
-                                      ],
-                                    ),
+                                    // Row(
+                                    //   children: [
+                                    //     Text(
+                                    //       " Pengiriman : " +
+                                    //           payOrder.jenisPengiriman,
+                                    //     ),
+                                    //     // const Spacer(),
+                                    //     Text(
+                                    //       " |" +
+                                    //           payOrder.jenisPembayaran,
+                                    //     ),
+                                    //     Text(
+                                    //       " Ko" + payOrder.kotaKecamatan,
+                                    //     ),
+                                    //   ],
+                                    // ),
                                   ],
                                 ),
                               ),

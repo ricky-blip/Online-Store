@@ -1,2 +1,2 @@
 # Ricky's Online Store 
-# Flutter & Laravel API
+# Flutter & Laravel (API)

@@ -37,6 +37,6 @@ class PaymentController extends GetxController {
     }
   }
 
-  //NOTE POST Upload Proof of Payment
+  //TODO - Upload Proof of Payment with access gallery and camera device user
   
 }

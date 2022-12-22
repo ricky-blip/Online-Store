@@ -24,7 +24,7 @@ class PaymentView extends GetView<PaymentController> {
         context: mContext,
         builder: (context) {
           return SimpleDialog(
-            title: Text(
+            title: const Text(
               'Pilih',
               style: TextStyle(
                 color: Colors.amber,
@@ -106,43 +106,47 @@ class PaymentView extends GetView<PaymentController> {
                       children: [
                         Column(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.credit_card,
                               size: 100,
                             ),
-                            Text(
+                            const Text(
                               'Mandiri Virtual Account',
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                            Text(
+                            const Text(
                               '90089181873817',
                             ),
                             const SizedBox(height: 10),
-                            Text(
+                            const Text(
                               'a.n Syntop Laptopindo',
                             ),
                             const SizedBox(height: 10),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.90,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                color: appScaffoldBlue,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Text(
                                   'Note : Silahkan bayar tagihan ini sebelum menggunakan transfer bank lagi',
                                   // style: whiteTextStyle.copyWith(fontSize: 12),
                                 ),
                               ),
-                              decoration: BoxDecoration(
-                                color: appScaffoldBlue,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
                             ),
                             const SizedBox(height: 20),
                             Container(
                               width: MediaQuery.of(context).size.width * 0.90,
+                              decoration: BoxDecoration(
+                                color: appScaffoldBlue,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                               child: Padding(
-                                padding: EdgeInsets.all(15.0),
+                                padding: const EdgeInsets.all(15.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -152,7 +156,7 @@ class PaymentView extends GetView<PaymentController> {
                                           () => controllerP.selectedImagePath
                                                       .value ==
                                                   ''
-                                              ? Icon(
+                                              ? const Icon(
                                                   Icons
                                                       .drive_folder_upload_outlined,
                                                   size: 70,
@@ -177,7 +181,7 @@ class PaymentView extends GetView<PaymentController> {
                                             onPressed: () {
                                               takeImage(context);
                                             },
-                                            child: Text(
+                                            child: const Text(
                                               'Upload Payment Proof',
                                             ),
                                           ),
@@ -186,10 +190,6 @@ class PaymentView extends GetView<PaymentController> {
                                     ),
                                   ],
                                 ),
-                              ),
-                              decoration: BoxDecoration(
-                                color: appScaffoldBlue,
-                                borderRadius: BorderRadius.circular(5),
                               ),
                             ),
                           ],

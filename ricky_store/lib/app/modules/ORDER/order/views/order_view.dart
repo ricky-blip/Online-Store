@@ -163,7 +163,7 @@ class OrderView extends GetView<OrderController> {
             },
           ),
 
-          // SECTION 2: PAYMENT & DELIVERY(Dropdown)
+          // SECTION 2: PAYMENT & DELIVERY(DropdownButton)
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Row(

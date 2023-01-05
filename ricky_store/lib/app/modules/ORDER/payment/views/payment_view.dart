@@ -324,25 +324,68 @@ class PaymentView extends GetView<PaymentController> {
                                         ),
                                       ],
                                     ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            //Delivery to:
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.90,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    const Text(
+                                      'Deliver To:',
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          "Name",
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                          payOrder.nama,
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          "Phone No.",
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                          payOrder.nohp,
+                                        ),
+                                      ],
+                                    ),
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    // Row(
-                                    //   children: [
-                                    //     Text(
-                                    //       " Pengiriman : " +
-                                    //           payOrder.jenisPengiriman,
-                                    //     ),
-                                    //     // const Spacer(),
-                                    //     Text(
-                                    //       " |" +
-                                    //           payOrder.jenisPembayaran,
-                                    //     ),
-                                    //     Text(
-                                    //       " Ko" + payOrder.kotaKecamatan,
-                                    //     ),
-                                    //   ],
-                                    // ),
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          'City',
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                          payOrder.kotaKecamatan,
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
@@ -357,6 +400,60 @@ class PaymentView extends GetView<PaymentController> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            payOrder.buktiBayar != null
+                ? GestureDetector(
+                    onTap: () {
+                      if (controllerP.selectedImagePath.value == '') {
+                        Get.snackbar("Error", "Harap upload bukti bayar!");
+                      } else {
+                        //TODO - buat function untuk send data
+                        // controllerP.sendData(payOrder.id.toString());
+                      }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 45,
+                        child: Center(
+                          child: Text(
+                            'Kirim bukti bayar',
+                            // style: whiteTextStyle.copyWith(
+                            //     fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: 45,
+                      child: Center(
+                        child: Text(
+                          'Pemesanan sedang diproses',
+                          // style: whiteTextStyle.copyWith(
+                          //     fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+          ],
+        ),
       ),
     );
   }

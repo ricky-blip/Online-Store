@@ -18,15 +18,15 @@ void main() async {
       theme: ThemeData(
         useMaterial3: true,
         textTheme: const TextTheme(
-          headline5: TextStyle(
+          headlineSmall: TextStyle(
             color: appBlack,
             fontWeight: FontWeight.bold,
           ),
-          headline6: TextStyle(
+          titleLarge: TextStyle(
             color: appBlack,
             fontWeight: FontWeight.bold,
           ),
-          subtitle1: TextStyle(
+          titleMedium: TextStyle(
             color: appBlack,
             fontWeight: FontWeight.w500,
           ),

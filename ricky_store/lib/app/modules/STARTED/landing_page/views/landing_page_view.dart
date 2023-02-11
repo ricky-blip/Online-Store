@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ricky_store/app/data/models/product/product_recommended_model.dart';
-import 'package:ricky_store/app/modules/STARTED/home/views/home_view.dart';
 import 'package:ricky_store/app/routes/app_pages.dart';
 import 'package:sp_util/sp_util.dart';
 
@@ -110,7 +109,7 @@ class LandingPageView extends GetView<LandingPageController> {
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return const Text("Waiting . . .");
+                          return const RefreshProgressIndicator();
                         } else if (snapshot.hasData) {
                           return Row(
                             children: [
@@ -165,7 +164,7 @@ class LandingPageView extends GetView<LandingPageController> {
                   future: controller.getProductRecommended("recommended"),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Text("Waiting Data . . .");
+                      return const RefreshProgressIndicator();
                     } else if (snapshot.hasData) {
                       return AlignedGridView.count(
                         shrinkWrap: true,

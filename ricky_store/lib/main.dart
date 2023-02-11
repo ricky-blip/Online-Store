@@ -16,6 +16,7 @@ void main() async {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: ThemeData(
+        useMaterial3: true,
         textTheme: const TextTheme(
           headline5: TextStyle(
             color: appBlack,

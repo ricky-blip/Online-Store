@@ -22,7 +22,7 @@ class RegisterView extends GetView<RegisterController> {
             children: [
               Text(
                 "already have an account?",
-                style: Get.textTheme.subtitle2,
+                style: Get.textTheme.titleSmall,
               ),
               TextButton(
                 onPressed: () {
@@ -30,7 +30,7 @@ class RegisterView extends GetView<RegisterController> {
                 },
                 child: Text(
                   "Login Now",
-                  style: Get.textTheme.subtitle1,
+                  style: Get.textTheme.titleMedium,
                 ),
               )
             ],
@@ -61,7 +61,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                     child: TextField(
                       controller: controller.fullName,
-                      style: Get.textTheme.subtitle1,
+                      style: Get.textTheme.titleMedium,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Full Name",
